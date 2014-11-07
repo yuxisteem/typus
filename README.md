@@ -19,7 +19,6 @@ concentrate on your application instead of the bits to manage the system.
 
 - Built-in Authentication and Access Control Lists.
 - CRUD and custom actions for your models on a clean interface.
-- Internationalized interface ([See available translations][typus_locales])
 - Customizable and extensible templates.
 - Integrated [paperclip][paperclip] and [dragonfly][dragonfly] attachments viewer.
 - Supports Rails 4
