@@ -30,7 +30,6 @@ class ClickAllTest < Capybara::Rails::TestCase
       categories
       entry_bulks
       entry_trashes
-      admin_users
       typus_users
       devise_users
       birds
