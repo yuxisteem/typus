@@ -6,13 +6,13 @@ source 'https://rubygems.org'
 gemspec
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.4'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -30,9 +30,9 @@ gem 'jbuilder'
 # end
 
 platforms :ruby do
-  gem 'mysql2', '~> 0.3.16'
+  gem 'mysql2', '~> 0.3.17'
   gem 'pg', '~> 0.17.1'
-  gem 'sqlite3', '~> 1.3.9'
+  gem 'sqlite3', '~> 1.3.10'
 end
 
 # Typus can manage lists, trees, trashes, so we want to enable this stuff
