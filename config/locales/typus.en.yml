@@ -7,10 +7,11 @@ en:
         title: 'Forgot password?'
         remember_password: "I remember my password"
       form:
-        submit: 'Create'
+        submit: 'Submit'
     session:
       new:
         title: 'Please sign in'
+        recover_password: "Recover password"
 
   typus:
     dashboard: 'Dashboard'
@@ -38,7 +39,6 @@ en:
       remove: "Remove"
       preview: "Preview"
       apply: "Apply"
-      send: "Send"
       restore: "Restore"
       destroy: "Destroy"
       destroy_permanently: "Destroy permanently"
@@ -97,7 +97,6 @@ en:
         title: "Destroy %{label}"
 
     sessions:
-      recover_password: "Recover password"
       new:
         title: "Sign in"
 

@@ -6,16 +6,13 @@
 <%= form_for Typus.user_class_as_symbol,
              url: { action: :create, return_to: params[:return_to] },
              html: { class: "form-signin" } do |form| %>
-
-  <%= render partial: 'admin/account/form',
-             locals: { form: form, submit_text: 'typus.buttons.sign_in' } %>
-
+  <%= render partial: 'admin/account/form', locals: { form: form } %>
 <% end %>
 
 <% if Typus.mailer_sender %>
   <% content_for :actions do %>
     <ul>
-      <li><%= link_to t('typus.sessions.recover_password'), forgot_password_admin_account_index_path %></li>
+      <li><%= link_to t('.recover_password'), forgot_password_admin_account_index_path %></li>
     </ul>
   <% end %>
 <% end %>
