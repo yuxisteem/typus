@@ -19,7 +19,6 @@ class Admin::AccountControllerTest < ActionController::TestCase
     assert_response :success
     assert_template 'new'
     assert_template 'layouts/admin/session'
-    assert_equal 'Enter your email below to create the first user.', flash[:notice]
   end
 
   test 'forgot_password redirects to new when no users' do
