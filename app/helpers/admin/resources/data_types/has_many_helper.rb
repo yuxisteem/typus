@@ -5,7 +5,9 @@ module Admin::Resources::DataTypes::HasManyHelper
     class_name = att_assoc.options[:class_name] || filter.classify
     resource = class_name.constantize
 
-    items = [[t('View all %{attribute}', attribute: @resource.human_attribute_name(filter).downcase.pluralize), '']]
+    view_all = t('typus.filters.view_all', attribute: @resource.human_attribute_name(filter).downcase.pluralize)
+
+    items = [[view_all, '']]
     items += resource.order(resource.typus_order_by).map { |v| [v.to_label, v.id] }
   end
 

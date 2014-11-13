@@ -38,7 +38,7 @@ en:
       create_success: "%{model} successfully created."
       delete_success: "%{model} successfully deleted."
       wipe_success: "%{resource} has been successfully removed from trash."
-      bulk_delete_success: 
+      bulk_delete_success:
         one: "Successfully deleted entry."
         other: "Successfully deleted %{count} entries."
       settings_update_success: "Settings successfully updated." # this can probably be removed later
@@ -52,7 +52,7 @@ en:
       trash_recover_failed: "%{resource} cannot be recovered from trash."
 
     errors:
-      intro: 
+      intro:
         one: "An error prohibited this page from being saved:"
         other: "%{count} errors prohibited this page from being saved:"
 
@@ -116,3 +116,4 @@ en:
 
     filters:
       trash: "Trash"
+      view_all: "View all %{attribute}"
