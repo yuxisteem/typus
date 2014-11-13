@@ -4,7 +4,8 @@ class Admin::SessionController < Admin::BaseController
 
   before_filter :create_an_account?, only: [:new, :create]
 
-  def new; end
+  def new
+  end
 
   def create
     email, password = admin_user_params[:email], admin_user_params[:password]

@@ -4,10 +4,12 @@ module Typus
       module ClassMethods
 
         # Model fields as an <tt>ActiveSupport::OrderedHash</tt>.
-        def model_fields; end
+        def model_fields
+        end
 
         # Model relationships as an <tt>ActiveSupport::OrderedHash</tt>.
-        def model_relationships; end
+        def model_relationships
+        end
 
         # Model description for admin panel.
         def typus_description
@@ -15,9 +17,11 @@ module Typus
         end
 
         # Form and list fields
-        def typus_fields_for(filter); end
+        def typus_fields_for(filter)
+        end
 
-        def typus_filters; end
+        def typus_filters
+        end
 
         # Extended actions for this model on Typus.
         def typus_actions_on(filter)
@@ -149,7 +153,8 @@ module Typus
           @adapter ||= ::ActiveRecord::Base.connection_config[:adapter]
         end
 
-        def typus_user_id?; end
+        def typus_user_id?
+        end
 
         def read_model_config
           Typus::Configuration.config[name] or raise "No typus configuration specified for #{name}"

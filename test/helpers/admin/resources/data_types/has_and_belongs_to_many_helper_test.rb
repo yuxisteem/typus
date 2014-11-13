@@ -5,7 +5,9 @@ class Admin::Resources::DataTypes::HasAndBelongsToManyHelperTest < ActiveSupport
   include Admin::Resources::DataTypes::HasAndBelongsToManyHelper
   include Admin::Resources::FormHelper
 
-  def render(*args); args; end
+  def render(*args)
+    args
+  end
 
   test 'typus_has_and_belongs_to_many_field' do
     @resource, attribute, form = EntryDefault, 'categories', {}

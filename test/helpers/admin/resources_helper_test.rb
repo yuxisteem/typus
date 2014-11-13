@@ -4,7 +4,9 @@ class Admin::ResourcesHelperTest < ActiveSupport::TestCase
 
   include Admin::ResourcesHelper
 
-  def render(*args); args; end
+  def render(*args)
+    args
+  end
 
   setup do
     @expected = ["helpers/admin/resources/search", {hidden_filters: {}}]
