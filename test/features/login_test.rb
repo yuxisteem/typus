@@ -13,7 +13,7 @@ class LoginTest < Capybara::Rails::TestCase
     visit root_path
     fill_in('Email', with: @user.email)
     fill_in('Password', with: @user.password)
-    click_on 'Sign in'
+    click_on 'Submit'
     assert_css 'h2', text: 'Welcome!'
   end
 end
