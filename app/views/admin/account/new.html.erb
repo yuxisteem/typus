@@ -1,6 +1,6 @@
 <%
-  page_title = t('typus.accounts.new.title')
-  admin_title(page_title)
+  @page_title = t('.title')
+  admin_title(@page_title)
 %>
 
 <%= form_for Typus.user_class_as_symbol,
@@ -8,6 +8,6 @@
              html: { class: "form-signin" } do |form| %>
 
   <%= render partial: "form",
-             locals: { form: form, submit_text: 'typus.buttons.sign_up' } %>
+             locals: { form: form, submit_text: ".submit" } %>
 
 <% end %>

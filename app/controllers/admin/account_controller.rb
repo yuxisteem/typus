@@ -8,7 +8,6 @@ class Admin::AccountController < Admin::BaseController
   before_filter :new?, only: [:forgot_password, :send_password]
 
   def new
-    flash[:notice] = I18n.t('typus.sessions.initial_user_registration_message')
   end
 
   def create

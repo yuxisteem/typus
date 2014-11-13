@@ -1,6 +1,6 @@
 <%
-  page_title = t('typus.sessions.new.title')
-  admin_title(page_title)
+  @page_title = t('.title')
+  admin_title(@page_title)
 %>
 
 <%= form_for Typus.user_class_as_symbol,

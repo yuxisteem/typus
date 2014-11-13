@@ -1,6 +1,18 @@
 en:
-  typus:
+  admin:
+    account:
+      new:
+        title: 'Initial registration'
+      forgot_password:
+        title: 'Forgot password?'
+        remember_password: "I remember my password"
+      form:
+        submit: 'Create'
+    session:
+      new:
+        title: 'Please sign in'
 
+  typus:
     dashboard: 'Dashboard'
 
     # this is a catch-all for stuff I didn't know where else to put.
@@ -84,15 +96,7 @@ en:
       destroy:
         title: "Destroy %{label}"
 
-    accounts:
-      new:
-        title: "Sign up"
-      forgot_password:
-        title: "Forgot password"
-      remember_password: "I remember my password"
-
     sessions:
-      initial_user_registration_message: "Enter your email below to create the first user."
       recover_password: "Recover password"
       new:
         title: "Sign in"
