@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+./bin/setup
+bundle exec rake
