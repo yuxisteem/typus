@@ -46,8 +46,8 @@ class Admin::SessionControllerTest < ActionController::TestCase
     assert_response :success
 
     # render new and verify title and header
-    assert_select 'title', 'Sign in &middot; Typus'
-    assert_select 'h2', 'Typus'
+    assert_select 'title', 'Please sign in &middot; Typus'
+    assert_select 'h2', 'Please sign in'
 
     # render session layout
     assert_template 'new'
