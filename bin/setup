@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
+rbenv install --skip-existing
+
 bundle check || bundle install
