@@ -76,7 +76,9 @@ en:
       add:
         title: "Add %{resource}"
       edit:
-        title: "Edit %{label}"
+        title: "Edit '%{label}'"
+      show:
+        title: "Details for '%{label}'"
       edited_recently:
         title: "Edited recently"
       destroy:
