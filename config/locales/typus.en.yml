@@ -107,7 +107,6 @@ en:
       actions: "Actions"
       view_site: "View site"
       search: "Search"
-      search_placeholder: "Search ..."
 
     labels:
       read_only: "Read only"
