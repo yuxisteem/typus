@@ -12,7 +12,7 @@
        <li class="<%= klass %>">
         <%= link_to url_for(params.dup.cleanup.merge(action: 'index', scope: scope)) do %>
           <span class="glyphicon glyphicon-list"></span>
-          <%= t(scope.humanize) %>
+          <%= t("activerecord.scopes.#{@resource.name.underscore}.#{scope}") %>
           <% if @resource.typus_options_for(:counters)  %>
             <%= "&nbsp; <span class='badge'>#{@resource.send(scope).count}</span>".html_safe %>
           <% end %>
