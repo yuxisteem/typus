@@ -17,7 +17,7 @@ module Admin::Resources::DataTypes::BooleanHelper
     }
 
     human_boolean = display_boolean(item, attribute)
-    link_to t(human_boolean), options
+    link_to human_boolean, options
   end
 
   def boolean_filter(filter)
