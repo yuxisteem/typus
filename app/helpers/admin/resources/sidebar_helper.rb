@@ -31,16 +31,4 @@ module Admin::Resources::SidebarHelper
     }
   end
 
-  # TODO: Move it to the header.
-  def sidebar_view_site
-    if Typus.link_to_view_site
-      {
-        message: t('typus.sidebar.view_site'),
-        url: Typus.admin_title_link,
-        link_to_options: { target: '_blank' },
-        icon: 'share',
-      }
-    end
-  end
-
 end
