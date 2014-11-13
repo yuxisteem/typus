@@ -1,7 +1,11 @@
 module Admin::Resources::DataTypes::StringHelper
 
   def display_string(item, attribute)
-    item.send(attribute) || mdash
+    if (data = item.send(attribute)).present?
+      data
+    else
+      mdash
+    end
   end
 
   alias_method :display_decimal, :display_string
