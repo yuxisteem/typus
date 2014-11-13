@@ -25,7 +25,7 @@ module Admin::Resources::DataTypes::BooleanHelper
     attribute = @resource.human_attribute_name(filter)
 
     items = [[attribute.titleize, '']]
-    array = values.map { |k, v| ["#{attribute}:#{t(k.humanize)}", v] }
+    array = values.map { |k, v| ["#{attribute}:#{k.humanize}", v] }
 
     items + array
   end
