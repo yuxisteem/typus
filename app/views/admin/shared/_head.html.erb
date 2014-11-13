@@ -13,3 +13,9 @@
 <%= yield :javascripts -%>
 
 <%= csrf_meta_tag %>
+
+<% if Rails.env.development? %>
+  <style type="text/css">
+    .translation_missing { background: red; color: white; padding: 5px; }
+  </style>
+<% end %>

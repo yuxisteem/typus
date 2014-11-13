@@ -4,9 +4,3 @@
 *= require typus/overrides
 *= require typus/custom
 */
-
-.translation_missing {
-  background: red;
-  color: white;
-  padding: 5px;
-}
