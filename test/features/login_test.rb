@@ -9,7 +9,7 @@ class LoginTest < Capybara::Rails::TestCase
     @user.password = "12345678"
   end
 
-  test 'Successful login' do
+  test 'successful login' do
     visit root_path
     fill_in('Email', with: @user.email)
     fill_in('Password', with: @user.password)
