@@ -213,7 +213,8 @@ class Admin::ResourcesController < Admin::BaseController
                 I18n.t('typus.flash.update_success', model: @resource.model_name.human)
               end
 
-    redirect_to path.merge!(options).compact, notice: notice
+    path = path.merge!(options).compact.to_hash
+    redirect_to path, notice: notice
   end
 
   def set_default_action
