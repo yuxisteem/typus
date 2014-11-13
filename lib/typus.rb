@@ -31,17 +31,12 @@ module Typus
 
   mattr_accessor :default_locale
   @@default_locale = :en
-  
+
   mattr_accessor :admin_title
   @@admin_title = "Typus"
 
   mattr_accessor :admin_title_link
   @@admin_title_link = nil
-
-  mattr_accessor :admin_sub_title
-  @@admin_sub_title = <<-CODE
-<a href="http://core.typuscmf.com/">core.typuscmf.com</a>
-  CODE
 
   # Set authentication (none, http_basic, session)
   mattr_accessor :authentication

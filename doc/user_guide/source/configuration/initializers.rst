@@ -19,19 +19,6 @@ name of the Rails application.
   end
 
 
-Admin Sub Title
----------------
-
-The ``admin_sub_title`` is shown at the login page and at the admin panel
-footer.
-
-.. code-block:: ruby
-
-  Typus.setup do |config|
-    config.admin_sub_title = "Developed by ..."
-  end
-
-
 Authentication
 --------------
 

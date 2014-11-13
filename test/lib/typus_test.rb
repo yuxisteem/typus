@@ -18,10 +18,6 @@ class TypusTest < ActiveSupport::TestCase
     assert Typus.admin_title_link.nil?
   end
 
-  test 'default_config for admin_sub_title' do
-    assert Typus.admin_sub_title.is_a?(String)
-  end
-
   test 'default_config for authentication' do
     assert_equal :session, Typus.authentication
   end
