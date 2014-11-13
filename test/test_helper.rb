@@ -9,10 +9,6 @@ require 'rails/test_help'
 require 'minitest/autorun'
 
 Rails.backtrace_cleaner.remove_silencers!
-
-#
-# raise an exception for missing translations so we can fix the error right away
-#
 Rails.application.config.action_view.raise_on_missing_translations = true
 
 class ActiveSupport::TestCase
