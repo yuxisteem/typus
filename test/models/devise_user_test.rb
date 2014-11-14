@@ -18,15 +18,15 @@ class DeviseUserTest < ActiveSupport::TestCase
   test 'can?' do
     user = devise_users(:default)
     assert user.can?('delete', TypusUser)
-    refute user.cannot?('delete', TypusUser)
+    assert_not user.cannot?('delete', TypusUser)
     assert user.can?('delete', 'TypusUser')
-    refute user.cannot?('delete', 'TypusUser')
+    assert_not user.cannot?('delete', 'TypusUser')
   end
 
   test 'is_root?' do
     user = devise_users(:default)
     assert user.is_root?
-    refute user.is_not_root?
+    assert_not user.is_not_root?
   end
 
   test 'role' do

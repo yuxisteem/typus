@@ -16,7 +16,7 @@ class AdminUserTest < ActiveSupport::TestCase
     first_token = admin.token
     admin.save
     second_token = admin.token
-    refute first_token.eql?(second_token)
+    assert_not first_token.eql?(second_token)
   end
 
   test 'mapping locales' do
@@ -37,7 +37,7 @@ class AdminUserTest < ActiveSupport::TestCase
     typus_user = typus_users(:admin)
     assert typus_user.valid?
     typus_user.password = '00000'
-    refute typus_user.valid?
+    assert_not typus_user.valid?
     assert_equal 'is too short (minimum is 6 characters)', typus_user.errors[:password].first
     typus_user.password = '000000'
     assert typus_user.valid?

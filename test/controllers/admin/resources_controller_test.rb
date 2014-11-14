@@ -29,7 +29,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
       get :index, scope: scope
       assert_response :unprocessable_entity
       assert_equal 'Not allowed! Requested scope not defined on your whitelist.', response.body
-      refute Entry.count.eql?(0)
+      assert_not Entry.count.eql?(0)
     end
   end
 
@@ -114,7 +114,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
 
     assert_response :redirect
     assert_redirected_to @request.env['HTTP_REFERER']
-    refute entry.reload.published
+    assert_not entry.reload.published
   end
 
   test 'get toggle redirects to edit when validation fails' do

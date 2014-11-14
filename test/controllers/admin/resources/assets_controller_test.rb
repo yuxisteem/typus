@@ -31,7 +31,7 @@ class Admin::AssetsControllerTest < ActionController::TestCase
     assert_redirected_to "/admin/assets/edit/#{asset.id}"
     assert_equal 'Asset successfully updated.', flash[:notice]
 
-    refute assigns(:item).dragonfly
+    assert_not assigns(:item).dragonfly
   end
 
 end

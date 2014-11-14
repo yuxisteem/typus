@@ -18,15 +18,15 @@ class UserTest < ActiveSupport::TestCase
   test 'can?' do
     typus_user = typus_users(:admin)
     assert typus_user.can?('delete', TypusUser)
-    refute typus_user.cannot?('delete', TypusUser)
+    assert_not typus_user.cannot?('delete', TypusUser)
     assert typus_user.can?('delete', 'TypusUser')
-    refute typus_user.cannot?('delete', 'TypusUser')
+    assert_not typus_user.cannot?('delete', 'TypusUser')
   end
 
   test 'is_root?' do
     typus_user = typus_users(:admin)
     assert typus_user.is_root?
-    refute typus_user.is_not_root?
+    assert_not typus_user.is_not_root?
   end
 
   test 'active?' do
@@ -34,13 +34,13 @@ class UserTest < ActiveSupport::TestCase
     assert typus_user.active?
 
     typus_user.status = false
-    refute typus_user.active?
+    assert_not typus_user.active?
 
     typus_user.role = 'unexisting'
-    refute typus_user.active?
+    assert_not typus_user.active?
 
     typus_user.status = true
-    refute typus_user.active?
+    assert_not typus_user.active?
   end
 
 end

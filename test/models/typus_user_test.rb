@@ -15,10 +15,10 @@ class TypusUserTest < ActiveSupport::TestCase
     assert typus_user.valid?
 
     typus_user.email = 'dong'
-    refute typus_user.valid?
+    assert_not typus_user.valid?
 
     typus_user.email = nil
-    refute typus_user.valid?
+    assert_not typus_user.valid?
   end
 
   test 'validate :role' do
@@ -38,7 +38,7 @@ class TypusUserTest < ActiveSupport::TestCase
   end
 
   # test 'generate' do
-  #   refute TypusUser.generate
+  #   assert_not TypusUser.generate
   #
   #   options = { email: 'new.user@example.com' }
   #   typus_user = TypusUser.generate(options)
@@ -59,7 +59,7 @@ class TypusUserTest < ActiveSupport::TestCase
   test 'should verify authenticated? returns true or false' do
     typus_user = typus_users(:admin)
     assert typus_user.authenticated?('12345678')
-    refute typus_user.authenticated?('87654321')
+    assert_not typus_user.authenticated?('87654321')
   end
 
   test 'should verify preferences are nil by default' do
@@ -137,7 +137,7 @@ class TypusUserTest < ActiveSupport::TestCase
     typus_user = typus_users(:admin)
     resource = posts(:default)
     resource.typus_user = typus_users(:editor)
-    refute typus_user.owns?(resource)
+    assert_not typus_user.owns?(resource)
   end
 
   test 'token changes every time we save the user' do
@@ -145,7 +145,7 @@ class TypusUserTest < ActiveSupport::TestCase
     first_token = typus_user.token
     typus_user.save
     second_token = typus_user.token
-    refute first_token.eql?(second_token)
+    assert_not first_token.eql?(second_token)
   end
 
 end
