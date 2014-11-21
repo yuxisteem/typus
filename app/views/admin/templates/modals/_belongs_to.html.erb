@@ -1,6 +1,6 @@
 <% content_for "modal_for_#{attribute}" do %>
 
-  <% new_page_title = t('typus.resources.add.title', :resource => related.model_name.human.titleize) %>
+  <% new_page_title = t('typus.resources.add.title', resource: related.model_name.human.titleize) %>
 
   <div id="modal-from-dom-<%= attribute_id %>" class="modal fade">
     <div class="modal-dialog">
