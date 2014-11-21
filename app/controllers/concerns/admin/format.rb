@@ -22,7 +22,7 @@ module Admin
                    case value
                    when :transversal
                      a, b = key.split('.')
-                     record.send(a).send(b)
+                     record.send(a).try(b)
                    when :belongs_to
                      record.send(key).try(:to_label)
                    else
