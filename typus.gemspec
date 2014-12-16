@@ -24,4 +24,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rails', '~> 4.1'
   spec.add_dependency 'bcrypt', '~> 3.1.5'
+  spec.add_dependency 'bootstrap-sass', '~> 3.3.1'
 end
