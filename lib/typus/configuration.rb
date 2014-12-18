@@ -25,7 +25,9 @@ module Typus
 
       Typus.role_configuration_files.each do |file|
         if data = YAML::load(ERB.new(File.read(file)).result)
-          data.compact.each do |key, value|
+          # For some weird reason we can't use {}.compact
+          data = data.delete_if { |_, v| v.blank? }
+          data.each do |key, value|
             @@roles[key] = @@roles[key].merge(value)
           end
         end
