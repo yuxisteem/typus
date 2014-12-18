@@ -51,7 +51,7 @@ and go to <http://0.0.0.0:3000/admin>.
 
 To test, clone the repo and run:
 
-    git clone --recursive git://github.com/typus/typus.git
+    git clone git://github.com/typus/typus.git
     bundle install
     bundle exec rake
 
@@ -60,7 +60,7 @@ To test, clone the repo and run:
 
 To run a demo on localhost:
 
-    git clone --recursive git://github.com/typus/typus.git
+    git clone git://github.com/typus/typus.git
     cd test/dummy
     ./bin/setup
     ./bin/rails server
