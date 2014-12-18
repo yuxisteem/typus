@@ -72,12 +72,13 @@ class ClassMethodsTest < ActiveSupport::TestCase
   end
 
   test "typus_fields_for returns form fields for Asset" do
-    expected = [["caption", :string],
-                ["dragonfly", :dragonfly],
-                ["dragonfly_required", :dragonfly]]
+    expected = {
+      "caption" => :string,
+      "dragonfly" => :dragonfly,
+      "paperclip" => :paperclip,
+    }
 
-    assert_equal expected.map(&:first), Asset.typus_fields_for(:special).keys
-    assert_equal expected.map(&:last), Asset.typus_fields_for(:special).values
+    assert_equal expected, Asset.typus_fields_for(:special)
   end
 
   test "typus_fields_for with virtual attributes" do
@@ -287,12 +288,15 @@ class ClassMethodsTest < ActiveSupport::TestCase
 
   test "read_model_config returns data for existing model" do
     expected = {"application"=>"CRUD Extended",
-                "fields"=>{"default"=>"caption, dragonfly, dragonfly_required",
-                           "special"=>"caption, dragonfly, dragonfly_required",
+                "fields"=>{"default"=>"caption, dragonfly, paperclip",
+                           "special"=>"caption, dragonfly, paperclip",
                            "form"=>"caption, dragonfly, dragonfly_required, paperclip, paperclip_required",
                            "new"=>"dragonfly, dragonfly_required, paperclip, paperclip_required",
                            "virtual"=>"caption, original_file_name"}}
-    assert_equal expected, Asset.read_model_config
+
+    %w(fields application).each do |key|
+      assert_equal expected[key], Asset.read_model_config[key]
+    end
   end
 
   test "read_model_config raises an error when model does not exist on configuration" do
