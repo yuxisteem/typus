@@ -35,5 +35,4 @@ module Admin::Resources::DataTypes::StringHelper
   alias_method :table_virtual_field, :table_string_field
   alias_method :table_password_field, :table_string_field
   alias_method :table_json_field, :table_string_field
-
 end

@@ -9,7 +9,7 @@ module Admin::Resources::FormHelper
                   typus_belongs_to_field(key, form)
                 when :tree
                   typus_tree_field(key, form)
-                when :boolean, :date, :datetime, :text, :time, :password, :selector, :dragonfly, :paperclip
+                when :boolean, :date, :datetime, :text, :time, :password, :selector, :dragonfly, :paperclip, :json
                   typus_template_field(key, value, form)
                 when :template
                   typus_template_field(key, template, form)
