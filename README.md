@@ -1,6 +1,7 @@
 # Typus: Admin Panel for Ruby on Rails applications
 
 [![Build Status](https://travis-ci.org/typus/typus.svg?branch=master)](https://travis-ci.org/typus/typus)
+[![Circle CI](https://circleci.com/gh/typus/typus/tree/master.svg?style=svg)](https://circleci.com/gh/typus/typus/tree/master)
 
 **Typus** is a control panel for [Ruby on Rails][rails] applications to
 allow trusted users edit structured content.
