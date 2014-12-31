@@ -4,7 +4,7 @@ require 'typus/version'
 
 files      = Dir['**/*'].keep_if { |file| File.file?(file) }
 test_files = Dir['test/**/*'].keep_if { |file| File.file?(file) }
-ignores    = Dir['doc/**/*'].keep_if { |file| File.file?(file) } + %w(.travis.yml .gitignore)
+ignores    = Dir['doc/**/*'].keep_if { |file| File.file?(file) } + %w(.travis.yml .gitignore circle.yml)
 
 Gem::Specification.new do |spec|
   spec.name          = 'typus'
