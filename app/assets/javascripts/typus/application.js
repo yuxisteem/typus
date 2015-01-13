@@ -1,6 +1,7 @@
 //= require typus/jquery-2.1.1.min
 //= require jquery_ujs
 //= require typus/jquery.application
+//= require chosen.jquery.js
 //= require typus/custom
 
 $(document).on('click', '.ajax-modal', function() {
