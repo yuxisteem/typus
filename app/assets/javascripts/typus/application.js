@@ -4,7 +4,7 @@
 //= require typus/jquery.application
 //= require typus/custom
 
-$(".ajax-modal").live('click', function() {
+$(document).on('click', '.ajax-modal', function() {
   var url = $(this).attr('url');
   var modal_id = $(this).attr('data-controls-modal');
   $("#" + modal_id + " .modal-body").load(url);
