@@ -35,7 +35,7 @@ class Admin::SessionControllerTest < ActionController::TestCase
   end
 
   test "get new always sets locale to Typus::I18n.default_locale" do
-    I18n.locale = :jp
+    I18n.locale = :de
     get :new
     assert_equal :en, I18n.locale
   end
@@ -48,7 +48,7 @@ class Admin::SessionControllerTest < ActionController::TestCase
     assert_response :success
 
     # render new and verify title and header
-    assert_select "title", "Typus &mdash; Sign in"
+    assert_select "title", "Typus — Sign in"
     assert_select "h1", "Typus"
 
     # render session layout
