@@ -40,7 +40,7 @@ gem 'jquery-rails'
 gem "ckeditor-rails", :git => "git://github.com/fesplugas/rails-ckeditor.git"
 
 # Alternative authentication
-gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'rails4'
+gem 'devise', '~> 3.4.0' #:git => 'git://github.com/plataformatec/devise.git', :branch => 'rails4'
 
 # Asset Management
 gem 'dragonfly', '~> 0.9.14'
