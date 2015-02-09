@@ -51,7 +51,7 @@ module Typus
               !(k.to_sym == :search)
             end
 
-            query_params.compact.each do |key, value|
+            query_params.reject!(&:blank?).each do |key, value|
               filter_type = model_fields[key.to_sym] || model_relationships[key.to_sym] || key
               conditions << send("build_#{filter_type}_conditions", key, value)
             end
@@ -61,7 +61,7 @@ module Typus
         def build_my_joins(params)
           query_params = params.dup
           query_params.reject! { |k, v| !model_relationships.keys.include?(k.to_sym) }
-          query_params.compact.map { |k, v| k.to_sym }
+          query_params.reject!(&:blank?).map { |k, v| k.to_sym }
         end
 
       end
