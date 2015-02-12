@@ -25,7 +25,8 @@ module Typus
 
       Typus.role_configuration_files.each do |file|
         if data = YAML::load(ERB.new(File.read(file)).result)
-          data.compact.each do |key, value|
+          # The Rails implementation of {}.compact only rejects nil, not blank.
+          data.delete_if { |k, v| v.blank? }.each do |key, value|
             @@roles[key] = @@roles[key].merge(value)
           end
         end

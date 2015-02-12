@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require "test_helper"
 
 class Admin::DashboardControllerTest < ActionController::TestCase
@@ -55,7 +57,7 @@ class Admin::DashboardControllerTest < ActionController::TestCase
     assert_template "layouts/admin/base"
 
     # verify title
-    assert_select "title", "Typus &mdash; Dashboard"
+    assert_select "title", "Typus — Dashboard"
 
     # verify link to session sign out
     link = %(href="/admin/session")

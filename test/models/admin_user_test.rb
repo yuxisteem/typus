@@ -38,6 +38,7 @@ class AdminUserTest < ActiveSupport::TestCase
     assert_equal "is too short (minimum is 6 characters)", admin_user.errors[:password].first
 
     assert FactoryGirl.build(:typus_user, :password => "000000").valid?
+    assert FactoryGirl.build(:typus_user, :password => "").invalid?
   end
 
 end

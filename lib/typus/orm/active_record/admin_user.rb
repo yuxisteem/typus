@@ -73,7 +73,7 @@ module Typus
         end
 
         def password_must_be_strong(count = 6)
-          if password.present? && password.size < count
+          if !password.nil? && password.size < count
             errors.add(:password, :too_short, :count => count)
           end
         end

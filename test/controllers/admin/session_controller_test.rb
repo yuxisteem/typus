@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require "test_helper"
 
 =begin
@@ -35,41 +37,38 @@ class Admin::SessionControllerTest < ActionController::TestCase
   end
 
   test "get new always sets locale to Typus::I18n.default_locale" do
-    I18n.locale = :jp
+    I18n.locale = :de
     get :new
     assert_equal :en, I18n.locale
   end
 
   test 'new is rendered when there are users' do
     FactoryGirl.create(:typus_user)
-    Typus.mailer_sender = nil
 
-    get :new
-    assert_response :success
+    Typus.stub :mailer_sender, nil do
+      get :new
+      assert_response :success
 
-    # render new and verify title and header
-    assert_select "title", "Typus &mdash; Sign in"
-    assert_select "h1", "Typus"
+      # render new and verify title and header
+      assert_select "title", "Typus — Sign in"
+      assert_select "h1", "Typus"
 
-    # render session layout
-    assert_template "new"
-    assert_template "layouts/admin/session"
+      # render session layout
+      assert_template "new"
+      assert_template "layouts/admin/session"
 
-    # verify_typus_sign_in_layout_does_not_include_recover_password_link
-    assert !response.body.include?("Recover password")
-
-    Typus.mailer_sender = 'john@example.com'
+      # verify_typus_sign_in_layout_does_not_include_recover_password_link
+      assert !response.body.include?("Recover password")
+    end
   end
 
   test "new includes recover_password_link when mailer_sender is set" do
     FactoryGirl.create(:typus_user)
 
-    Typus.mailer_sender = 'john@example.com'
-
-    get :new
-    assert response.body.include?("Recover password")
-
-    Typus.mailer_sender = nil
+    Typus.stub :mailer_sender, 'john@example.com' do
+      get :new
+      assert response.body.include?("Recover password")
+    end
   end
 
   test 'create should not create session for invalid users' do

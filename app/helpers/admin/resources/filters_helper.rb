@@ -1,6 +1,6 @@
 module Admin::Resources::FiltersHelper
 
-  def build_filters(resource = @resource, params = params)
+  def build_filters(resource = @resource, params = self.params)
     if (typus_filters = resource.typus_filters).any?
       locals = {}
 
