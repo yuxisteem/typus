@@ -98,6 +98,7 @@ class Admin::TypusUsersControllerTest < ActionController::TestCase
     editor_sign_in
     get :edit, id: @typus_user.id
     assert_response :success
+    assert_select 'form input[name=_continue]'
   end
 
   test "editor is redirected to his profile after update" do
