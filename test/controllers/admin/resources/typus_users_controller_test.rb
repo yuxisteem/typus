@@ -113,7 +113,7 @@ class Admin::TypusUsersControllerTest < ActionController::TestCase
     post :update, :id => @typus_user.id, :typus_user => { :role => 'admin' }, :_continue => true
     assert_response :redirect
     assert_redirected_to "/admin/typus_users/edit/#{@typus_user.id}"
-    assert_equal "editor", @typus_user.role
+    assert_equal "editor", @typus_user.reload.role
   end
 
   test "editor should not be able to destroy his profile" do
