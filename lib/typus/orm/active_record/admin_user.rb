@@ -13,6 +13,7 @@ module Typus
         included do
           attr_reader   :password
           attr_accessor :password_confirmation
+          attr_accessor :user_performing_update
 
           # attr_protected :role, :status
 
@@ -20,6 +21,7 @@ module Typus
           validates :password, :confirmation => true
           validates :password_digest, :presence => true
           validate :password_must_be_strong
+          validate :validate_role_and_status_changes, :if => :user_performing_update
           validates :role, :presence => true
 
           serialize :preferences
@@ -69,15 +71,20 @@ module Typus
 
         def password=(unencrypted_password)
           @password = unencrypted_password
-          self.password_digest = BCrypt::Password.create(unencrypted_password)
+          self.password_digest = BCrypt::Password.create(unencrypted_password) unless unencrypted_password.blank?
         end
 
         def password_must_be_strong(count = 6)
-          if !password.nil? && password.size < count
+          if password.present? && password.size < count
             errors.add(:password, :too_short, :count => count)
           end
         end
 
+        def validate_role_and_status_changes
+          updates_not_allowed = ((user_performing_update == self) || user_performing_update.cannot?('edit', self.class.name))
+          errors.add(:status, 'cannot be changed') if status_changed? && updates_not_allowed
+          errors.add(:role, 'cannot be changed') if role_changed? && updates_not_allowed
+        end
       end
     end
   end
