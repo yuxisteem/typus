@@ -1,4 +1,4 @@
-<% password_digest = BCrypt::Password.create('12345678') %>
+<% password_digest = BCrypt::Password.create(Typus.password) %>
 
 admin:
   email: 'admin@example.com'
