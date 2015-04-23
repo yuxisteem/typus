@@ -201,9 +201,7 @@ class Admin::ResourcesController < Admin::BaseController
 
     options = if params[:_addanother]
       { action: 'new', id: nil }
-    elsif params[:_continue]
-      { action: 'edit', id: @item.id }
-    elsif (@item.is_a?(Typus.user_class) && @item.is_not_root?) # Hack for TypusUser edits.
+    elsif params[:_continue] || bypass_save_button_action
       { action: 'edit', id: @item.id }
     else
       { action: nil, id: nil }
@@ -217,6 +215,11 @@ class Admin::ResourcesController < Admin::BaseController
 
     path = path.merge!(options).compact.to_hash
     redirect_to path, notice: notice
+  end
+
+  # Hack for TypusUser edits.
+  def bypass_save_button_action
+    (@item.is_a?(Typus.user_class) && admin_user.is_not_root?) && params[:_save]
   end
 
   def set_default_action
