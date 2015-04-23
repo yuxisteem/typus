@@ -203,6 +203,8 @@ class Admin::ResourcesController < Admin::BaseController
       { action: 'new', id: nil }
     elsif params[:_continue]
       { action: 'edit', id: @item.id }
+    elsif (@item.is_a?(Typus.user_class) && @item.is_not_root?) # Hack for TypusUser edits.
+      { action: 'edit', id: @item.id }
     else
       { action: nil, id: nil }
     end

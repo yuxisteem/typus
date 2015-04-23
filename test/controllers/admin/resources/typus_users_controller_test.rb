@@ -100,6 +100,13 @@ class Admin::TypusUsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "editor is redirected to his profile after update" do
+    editor_sign_in
+    post :update, id: @typus_user.id, typus_user: { first_name: 'John' }, _save: true
+    assert_response :redirect
+    assert_redirected_to "/admin/typus_users/edit/#{@typus_user.id}"
+  end
+
   test "editor should be able to update his profile" do
     editor_sign_in
     post :update, id: @typus_user.id, typus_user: { role: 'editor' }, _continue: true
@@ -165,7 +172,7 @@ class Admin::TypusUsersControllerTest < ActionController::TestCase
     post :update, id: @typus_user.id, typus_user: { role: 'designer', email: 'designer@withafancydomain.com' }, _save: true
 
     assert_response :redirect
-    assert_redirected_to "/admin/typus_users"
+    assert_redirected_to "/admin/typus_users/edit/#{@typus_user.id}"
     assert_equal "Typus user successfully updated.", flash[:notice]
     assert_equal "designer@withafancydomain.com", assigns(:item).email
   end
