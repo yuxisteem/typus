@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+require 'pathname'
+
+APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
+TEST_APP_ROOT = APP_ROOT.join('test', 'dummy')
+
+Dir.chdir TEST_APP_ROOT do
+  system "./bin/setup"
+end
