@@ -1,4 +1,4 @@
-<% connection = ENV.fetch('DB', 'sqlite3') %>
+<% connection = ENV.fetch('DB', 'postgresql') %>
 
 ##
 # Database settings.
