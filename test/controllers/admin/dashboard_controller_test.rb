@@ -55,7 +55,7 @@ class Admin::DashboardControllerTest < ActionController::TestCase
     assert_template "layouts/admin/base"
 
     # verify title
-    assert_select "title", "Dashboard &middot; Typus"
+    assert_select "title", "Dashboard · Typus"
 
     # verify link to session sign out
     link = %(href="/admin/session")
