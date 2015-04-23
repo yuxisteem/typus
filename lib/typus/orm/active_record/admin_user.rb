@@ -11,15 +11,12 @@ module Typus
         include Typus::Orm::ActiveRecord::InstanceMethods
 
         included do
-          attr_reader :password
-          attr_accessor :password_confirmation
+          has_secure_password
 
           # attr_protected :role, :status
 
           validates :email, presence: true, uniqueness: true, format: { with: Typus::Regex::Email }
-          validates :password, confirmation: true
-          validates :password_digest, presence: true
-          validate :password_must_be_strong
+          validates :password, length: { minimum: 8 }, allow_nil: true
           validates :role, presence: true
 
           serialize :preferences
@@ -31,7 +28,7 @@ module Typus
 
           def authenticate(email, password)
             user = find_by_email_and_status(email, true)
-            user && user.authenticated?(password) ? user : nil
+            user && user.authenticate(password) ? user : nil
           end
 
           def generate(*args)
@@ -60,22 +57,6 @@ module Typus
         def locale=(locale)
           self.preferences ||= {}
           self.preferences[:locale] = locale
-        end
-
-        def authenticated?(unencrypted_password)
-          equal = BCrypt::Password.new(password_digest) == unencrypted_password
-          equal ? self : false
-        end
-
-        def password=(unencrypted_password)
-          @password = unencrypted_password
-          self.password_digest = BCrypt::Password.create(unencrypted_password)
-        end
-
-        def password_must_be_strong(count = 6)
-          if password.present? && password.size < count
-            errors.add(:password, :too_short, count: count)
-          end
         end
 
       end

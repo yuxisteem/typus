@@ -178,4 +178,11 @@ class Admin::TypusUsersControllerTest < ActionController::TestCase
     assert_equal "designer@withafancydomain.com", assigns(:item).email
   end
 
+  test "password cannot be set to blank" do
+    setup_admin
+    post :update, id: @typus_user.id, typus_user: { first_name: "John", last_name: "Locke", password: '', role: 'admin', status: '1' }, _save: true
+    assert_response :redirect
+    assert assigns(:item).authenticate('12345678'), 'Invalid password!'
+  end
+
 end

@@ -27,13 +27,15 @@ class TypusUserTest < ActiveSupport::TestCase
     assert typus_user.invalid?
   end
 
-  test 'validate :password' do
+  test 'password' do
     typus_user = typus_users(:admin)
 
-    typus_user.password = '0' * 5
-    assert typus_user.invalid?
+    [nil, 'X'].each do |pwd|
+      typus_user.password = pwd
+      assert typus_user.invalid?
+    end
 
-    typus_user.password = '0' * 6
+    typus_user.password = 'flapjack'
     assert typus_user.valid?
   end
 
@@ -55,12 +57,6 @@ class TypusUserTest < ActiveSupport::TestCase
   #   assert_equal options[:email], typus_user.email
   #   assert_equal options[:role], typus_user.role
   # end
-
-  test 'should verify authenticated? returns true or false' do
-    typus_user = typus_users(:admin)
-    assert typus_user.authenticated?('12345678')
-    assert_not typus_user.authenticated?('87654321')
-  end
 
   test 'should verify preferences are nil by default' do
     typus_user = typus_users(:admin)
