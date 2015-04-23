@@ -24,7 +24,6 @@ gem 'turbolinks'
 gem 'jbuilder'
 
 # Database Adapters
-gem 'mysql2', '~> 0.3.17'
 gem 'pg', '~> 0.17.1'
 gem 'sqlite3', '~> 1.3.10'
 
