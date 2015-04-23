@@ -9,7 +9,7 @@ Typus.setup do |config|
   # Remember to setup the default url options for your specific environment
   # Here is an example of development environment:
   #
-  #     config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  #     config.action_mailer.default_url_options = { host: 'localhost:3000' }
   #
   # This is a required Rails configuration. In production it must be the actual
   # actual host of your application.
