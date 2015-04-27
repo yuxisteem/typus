@@ -13,6 +13,9 @@
     <% end %>
     <%= hidden_field_tag '_continue' %>
   <% else %>
+    <% resources_actions_for_current_role.map do |body, url, options| %>
+      <%= link_to t(body), params.dup.merge!(url).compact.cleanup, options || {class: 'btn btn-default'} %>
+    <% end %>
     <% build_save_options.each do |key, value, special| %>
       <%
         klass = key.eql?(:_save) ? 'btn btn-primary' : 'btn btn-default'
