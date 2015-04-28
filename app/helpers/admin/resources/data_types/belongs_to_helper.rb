@@ -20,16 +20,19 @@ module Admin::Resources::DataTypes::BelongsToHelper
 
     attribute_id = "#{@resource.name.underscore}_#{attribute}_id".gsub('/', '_')
 
-    render 'admin/templates/belongs_to',
-           attribute: attribute,
-           attribute_id: attribute_id,
-           form: form,
-           related_fk: related_fk,
-           related: related,
-           label_text: label_text.html_safe,
-           values: values,
-           html_options: { class: 'form-control' },
-           options: { include_blank: true, attribute: "#{@resource.name.underscore}_#{related_fk}" }
+    locals = {
+      attribute: attribute,
+      attribute_id: attribute_id,
+      form: form,
+      related_fk: related_fk,
+      related: related,
+      label_text: label_text.html_safe,
+      values: values,
+      html_options: { class: 'form-control' },
+      options: { include_blank: true, attribute: "#{@resource.name.underscore}_#{related_fk}" }
+    }
+
+    render 'admin/templates/belongs_to', locals
   end
 
   def table_belongs_to_field(attribute, item)
