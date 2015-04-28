@@ -55,11 +55,11 @@ Examples:
                         end.flatten.join(", ")
         option[:base] = <<-RAW
 #{model}:
-fields:
-  default: #{fields_for(model, 'to_label')}
-  form: #{fields_for(model)}
-relationships: #{relationships}
-application: Application
+  fields:
+    default: #{fields_for(model, 'to_label')}
+    form: #{fields_for(model)}
+  relationships: #{relationships}
+  application: Application
         RAW
         option[:roles] = "#{model}: create, read, update, delete"
         option
