@@ -22,8 +22,9 @@
           $('#modal-form-submit').click(function(e){
             e.preventDefault();
 
-            var data = $('#new_post').serialize();
-            var url = $('#<%= "new_#{related.model_name.to_s.downcase}" %>').attr('action')
+            var object = $('#<%= "new_#{related.model_name.to_s.downcase}" %>');
+            var data = object.serialize();
+            var url = object.attr('action')
 
             $.ajax({
               url: url,
