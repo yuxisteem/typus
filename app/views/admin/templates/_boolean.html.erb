@@ -1,7 +1,6 @@
-<% options.delete(:class) %>
+<% options = { class: 'checkbox' } %>
 
-<div class="checkbox" id="<%= attribute_id %>">
-  <label>
-    <%= form.check_box attribute, options %> <%= label_text %>
-  </label>
+<div class="form-group" id="<%= attribute_id %>">
+  <%= form.label attribute, label_text %>
+  <%= form.check_box attribute, options %>
 </div>
