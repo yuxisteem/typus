@@ -12,7 +12,7 @@ module Admin
     end
 
     def set_bulk_action
-      add_bulk_action('typus.buttons.move_to_trash', 'bulk_destroy')
+      add_bulk_action('typus.buttons.destroy', 'bulk_destroy')
     end
     private :set_bulk_action
 
