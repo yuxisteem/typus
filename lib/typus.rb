@@ -49,7 +49,7 @@ module Typus
   @@username = "admin"
 
   mattr_accessor :subdomain
-  @@subdomain = 'admin'
+  @@subdomain = nil
 
   # Define a default password for http authentication.
   mattr_accessor :password
