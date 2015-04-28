@@ -4,7 +4,7 @@ module Admin::ResourcesHelper
     if (typus_search = resource.typus_defaults_for(:search)) && typus_search.any?
 
       hidden_filters = params.dup
-      rejections = %w(id controller action locale utf8 sort_order order_by search page)
+      rejections = %w(id controller action locale utf8 sort_order order_by search page subdomain)
       hidden_filters.delete_if { |k, _| rejections.include?(k) }
 
       render 'helpers/admin/resources/search', hidden_filters: hidden_filters
