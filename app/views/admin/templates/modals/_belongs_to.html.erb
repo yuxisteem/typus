@@ -19,37 +19,27 @@
         </div>
 
         <script>
-
-          <% object_id = "new_#{related.model_name.to_s.downcase}" %>
-
           $('#modal-form-submit').click(function(e){
             e.preventDefault();
 
-            $('#<%= object_id %>').submit(function() {
+            var data = $('#new_post').serialize();
+            var url = $('#<%= "new_#{related.model_name.to_s.downcase}" %>').attr('action')
 
-              // Get the action url:
-              var action;
-              action = $('#<%= object_id %>').attr('action');
-
-              $.post(action, $(this).serialize(), function(data){})
-              .success(function(data, text, xhr) {
+            $.ajax({
+              url: url,
+              type: 'POST',
+              data: data,
+              success: function(data) {
                 $('.modal-body').html(data);
-
                 var option = new Option($("#_label").attr("value"), $("#_id").attr("value"), true, true);
                 parent.$("#<%= attribute_id %>").prepend(option);
-
                 $("#modal-from-dom-<%= attribute_id %>").modal('hide');
-              })
-              .error(function(request, status, error) {
+              },
+              error: function(request, status, error) {
                 $('.modal-body').html(request.responseText);
-              });
+              }
+            })
 
-              return false;
-            });
-
-            $('#<%= related.model_name.to_s.downcase %>').submit();
-
-            return false;
           });
         </script>
 
