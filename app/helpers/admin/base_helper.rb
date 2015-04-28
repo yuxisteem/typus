@@ -70,7 +70,7 @@ module Admin::BaseHelper
   end
 
   def typus_search_path
-    File.join("/",params[:controller])
+    File.join('/', params[:controller])
   end
 
 end
