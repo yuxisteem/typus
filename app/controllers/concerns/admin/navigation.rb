@@ -5,9 +5,10 @@ module Admin
 
     extend ActiveSupport::Concern
 
+    # TODO: Decide if this piece of code can be removed. Seems to be useless.
     included do
-      before_filter :set_resources_action_on_lists, only: [:index, :trash]
-      before_filter :set_resources_action, only: [:new, :create, :edit, :show]
+      # before_filter :set_resources_action_on_lists, only: [:index, :trash]
+      # before_filter :set_resources_action, only: [:new, :create, :edit, :show]
     end
 
     def set_resources_action_on_lists
