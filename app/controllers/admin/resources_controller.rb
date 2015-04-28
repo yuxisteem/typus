@@ -260,7 +260,7 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def cleanup_attributes_before_update
-    if @item.is_a?(Typus.user_class) && @item.is_not_root?
+    if Typus.user_class && @item.is_a?(Typus.user_class) && @item.is_not_root?
       params[Typus.user_class_as_symbol].delete(:role)
     end
   end
