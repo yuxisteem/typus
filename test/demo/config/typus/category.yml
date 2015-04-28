@@ -4,5 +4,6 @@ Category:
   fields:
     default: name
     form:
+  search: name
   relationships:
   application: Application
