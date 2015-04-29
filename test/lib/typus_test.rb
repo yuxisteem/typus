@@ -71,10 +71,10 @@ class TypusTest < ActiveSupport::TestCase
       'Category' => {},
     }
 
-    Typus::Configuration.stubs(:config).returns(config)
-
-    expected = %w(AdminUser Category View)
-    assert_equal expected, Typus.models
+    Typus::Configuration.stub(:config, config) do
+      expected = %w(AdminUser Category View)
+      assert_equal expected, Typus.models
+    end
   end
 
   test 'resources class_method' do

@@ -6,8 +6,8 @@ ActiveRecord::Schema.verbose = false
 require File.expand_path('../dummy/db/schema',  __FILE__)
 
 require 'rails/test_help'
-require 'mocha/mini_test'
 require 'minitest/autorun'
+require 'minitest/mock'
 
 Rails.backtrace_cleaner.remove_silencers!
 Rails.application.config.action_view.raise_on_missing_translations = true

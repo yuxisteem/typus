@@ -12,7 +12,7 @@ require 'test_helper'
 class Admin::AccountControllerTest < ActionController::TestCase
 
   test 'redirection to new when no users' do
-    TypusUser.stubs(:count).returns(0)
+    TypusUser.delete_all
 
     get :new
 
@@ -22,21 +22,21 @@ class Admin::AccountControllerTest < ActionController::TestCase
   end
 
   test 'forgot_password redirects to new when no users' do
-    TypusUser.stubs(:count).returns(0)
+    TypusUser.delete_all
     get :forgot_password
     assert_response :redirect
     assert_redirected_to new_admin_account_path
   end
 
   test 'send_password redirects to new when no users' do
-    TypusUser.stubs(:count).returns(0)
+    TypusUser.delete_all
     post :send_password, typus_user: { email: 'john@locke.com' }
     assert_response :redirect
     assert_redirected_to new_admin_account_path
   end
 
   test 'create with invalid emails redirects to new' do
-    TypusUser.stubs(:count).returns(0)
+    TypusUser.delete_all
 
     post :create, typus_user: { email: 'example.com' }
 
@@ -75,12 +75,13 @@ class Admin::AccountControllerTest < ActionController::TestCase
   end
 
   test 'send_password for existing email' do
-    Typus.stubs(:mailer_sender).returns('typus@example.com')
-    typus_user = typus_users(:admin)
-    post :send_password, typus_user: { email: typus_user.email }
-    assert_response :redirect
-    assert_redirected_to new_admin_session_path
-    assert_equal 'Password recovery link sent to your email.', flash[:notice]
+    Typus.stub(:mailer_sender, 'typus@example.com') do
+      typus_user = typus_users(:admin)
+      post :send_password, typus_user: { email: typus_user.email }
+      assert_response :redirect
+      assert_redirected_to new_admin_session_path
+      assert_equal 'Password recovery link sent to your email.', flash[:notice]
+    end
   end
 
   test 'show with token generates a session a redirects user to edit' do

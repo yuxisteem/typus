@@ -4,13 +4,11 @@ class ClickAllTest < Capybara::Rails::TestCase
 
   fixtures :typus_users
 
-  before do
-    Typus.stubs(:authentication).returns(:none) # auth is tested elsewhere
-  end
-
   test 'all sections' do
-    urls.each do |url|
-      visit "/admin/#{url}"
+    Typus.stub(:authentication, :none) do
+      urls.each do |url|
+        visit "/admin/#{url}"
+      end
     end
   end
 

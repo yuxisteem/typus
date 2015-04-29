@@ -15,10 +15,10 @@ class TypusUserRolesTest < ActiveSupport::TestCase
       'Category' => {},
     }
 
-    typus_user.stubs(:resources).returns(config)
-
-    expected = %w(AdminUser Category View)
-    assert_equal expected, typus_user.resources.map(&:first).sort
+    typus_user.stub(:resources, config) do
+      expected = %w(AdminUser Category View)
+      assert_equal expected, typus_user.resources.map(&:first).sort
+    end
   end
 
   test 'admin role has access to all actions on models' do
