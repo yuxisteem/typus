@@ -19,7 +19,7 @@ class Admin::EntryBulksControllerTest < ActionController::TestCase
   test 'get index shows available bulk_actions' do
     get :index
     expected = [
-      ['typus.buttons.move_to_trash', 'bulk_destroy'],
+      ['typus.buttons.destroy', 'bulk_destroy'],
       ['typus.buttons.mark_published', 'bulk_publish'],
       ['typus.buttons.mark_published', 'bulk_unpublish']
     ]

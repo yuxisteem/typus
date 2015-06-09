@@ -98,6 +98,14 @@ class Admin::TypusUsersControllerTest < ActionController::TestCase
     editor_sign_in
     get :edit, id: @typus_user.id
     assert_response :success
+    assert_select 'form input[name=_continue]'
+  end
+
+  test "editor is redirected to his profile after update" do
+    editor_sign_in
+    post :update, id: @typus_user.id, typus_user: { first_name: 'John' }, _save: true
+    assert_response :redirect
+    assert_redirected_to "/admin/typus_users/edit/#{@typus_user.id}"
   end
 
   test "editor should be able to update his profile" do
@@ -113,7 +121,7 @@ class Admin::TypusUsersControllerTest < ActionController::TestCase
     post :update, id: @typus_user.id, typus_user: { role: 'admin' }, _continue: true
     assert_response :redirect
     assert_redirected_to "/admin/typus_users/edit/#{@typus_user.id}"
-    assert_equal "editor", @typus_user.role
+    assert_equal "editor", @typus_user.reload.role
   end
 
   test "editor should not be able to destroy his profile" do
@@ -165,9 +173,16 @@ class Admin::TypusUsersControllerTest < ActionController::TestCase
     post :update, id: @typus_user.id, typus_user: { role: 'designer', email: 'designer@withafancydomain.com' }, _save: true
 
     assert_response :redirect
-    assert_redirected_to "/admin/typus_users"
+    assert_redirected_to "/admin/typus_users/edit/#{@typus_user.id}"
     assert_equal "Typus user successfully updated.", flash[:notice]
     assert_equal "designer@withafancydomain.com", assigns(:item).email
+  end
+
+  test "password cannot be set to blank" do
+    setup_admin
+    post :update, id: @typus_user.id, typus_user: { first_name: "John", last_name: "Locke", password: '', role: 'admin', status: '1' }, _save: true
+    assert_response :redirect
+    assert assigns(:item).authenticate(Typus.password), 'Invalid password!'
   end
 
 end

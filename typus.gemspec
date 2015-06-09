@@ -4,7 +4,7 @@ require 'typus/version'
 
 files      = Dir['**/*'].keep_if { |file| File.file?(file) }
 test_files = Dir['test/**/*'].keep_if { |file| File.file?(file) }
-ignores    = Dir['doc/**/*'].keep_if { |file| File.file?(file) } + %w(.travis.yml .gitignore)
+ignores    = Dir['doc/**/*'].keep_if { |file| File.file?(file) } + %w(.travis.yml .gitignore circle.yml)
 
 Gem::Specification.new do |spec|
   spec.name          = 'typus'
@@ -22,7 +22,6 @@ Gem::Specification.new do |spec|
   spec.test_files    = []
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'rails', '~> 4.1'
-  spec.add_dependency 'bcrypt', '~> 3.1.5'
-  spec.add_dependency 'bootstrap-sass', '~> 3.3.1'
+  spec.add_dependency 'rails', '~> 4.2.1'
+  spec.add_dependency 'bcrypt', '~> 3.1.10'
 end

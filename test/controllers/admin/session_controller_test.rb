@@ -46,7 +46,7 @@ class Admin::SessionControllerTest < ActionController::TestCase
     assert_response :success
 
     # render new and verify title and header
-    assert_select 'title', 'Please sign in &middot; Typus'
+    assert_select 'title', 'Please sign in · Typus'
     assert_select 'h2', 'Please sign in'
 
     # render session layout
@@ -73,7 +73,7 @@ class Admin::SessionControllerTest < ActionController::TestCase
     typus_user = typus_users(:admin)
     typus_user.update_column(:status, false)
 
-    post :create, { typus_user: { email: typus_user.email, password: '12345678' } }
+    post :create, { typus_user: { email: typus_user.email, password: Typus.password } }
 
     assert_nil request.session[:typus_user_id]
     assert_response :redirect
@@ -82,7 +82,7 @@ class Admin::SessionControllerTest < ActionController::TestCase
 
   test 'create should create session for an enabled user' do
     typus_user = typus_users(:admin)
-    post :create, { typus_user: { email: typus_user.email, password: '12345678' } }
+    post :create, { typus_user: { email: typus_user.email, password: Typus.password } }
 
     assert_equal typus_user.id, request.session[:typus_user_id]
     assert_response :redirect

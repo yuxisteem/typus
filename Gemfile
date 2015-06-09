@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 gemspec
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.4'
+gem 'sass-rails', '~> 5.0.1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
@@ -23,17 +23,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 
-# platforms :jruby do
-#   gem 'activerecord-jdbcmysql-adapter'
-#   gem 'activerecord-jdbcpostgresql-adapter'
-#   gem 'activerecord-jdbcsqlite3-adapter'
-# end
-
-platforms :ruby do
-  gem 'mysql2', '~> 0.3.17'
-  gem 'pg', '~> 0.17.1'
-  gem 'sqlite3', '~> 1.3.10'
-end
+# Database Adapters
+gem 'pg', '~> 0.17.1'
+gem 'sqlite3', '~> 1.3.10'
 
 # Typus can manage lists, trees, trashes, so we want to enable this stuff
 # on the demo.
@@ -46,18 +38,16 @@ gem 'rails-trash', github: 'fesplugas/rails-trash'
 gem 'ckeditor-rails', github: 'fesplugas/rails-ckeditor'
 
 # Alternative authentication
-gem 'devise', github: 'plataformatec/devise'
+gem 'devise', '~> 3.4.1'
 
 # Asset Management
 gem 'dragonfly', '~> 1.0.7'
 gem 'rack-cache', require: 'rack/cache'
-gem 'paperclip', '~> 4.2.0'
+gem 'paperclip', '~> 4.2.1'
+gem 'carrierwave', '~> 0.10.0'
 
 # MongoDB
 # gem 'mongoid', github: 'mongoid/mongoid'
-
-# Puma
-gem 'puma'
 
 # Testing stuff
 group :test do

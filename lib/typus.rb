@@ -177,7 +177,7 @@ module Typus
     private :is_active_record?
 
     def user_class
-      user_class_name.constantize
+      user_class_name.constantize rescue nil
     end
 
     def user_class_as_symbol

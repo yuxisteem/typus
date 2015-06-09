@@ -1,10 +1,10 @@
 //= require typus/jquery-2.1.1.min
 //= require jquery_ujs
-//= require bootstrap
 //= require typus/jquery.application
+//= require chosen.jquery.js
 //= require typus/custom
 
-$(".ajax-modal").on("click", function() {
+$(document).on('click', '.ajax-modal', function() {
   var url = $(this).attr('url');
   var modal_id = $(this).attr('data-controls-modal');
   $("#" + modal_id + " .modal-body").load(url);

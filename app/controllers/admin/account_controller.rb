@@ -20,7 +20,7 @@ class Admin::AccountController < Admin::BaseController
 
   def send_password
     if user = Typus.user_class.find_by_email(admin_user_params[:email])
-      Admin::Mailer.reset_password_instructions(user, request.host_with_port).deliver
+      Admin::Mailer.reset_password_instructions(user, request.host_with_port).deliver_later
       redirect_to new_admin_session_path, notice: I18n.t('typus.flash.password_reset_email_success')
     else
       render action: :forgot_password

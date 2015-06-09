@@ -6,7 +6,7 @@ class LoginTest < Capybara::Rails::TestCase
 
   before do
     @user = typus_users(:admin)
-    @user.password = "12345678"
+    @user.password = Typus.password
   end
 
   test 'successful login' do

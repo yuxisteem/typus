@@ -1,6 +1,6 @@
 # Typus: Admin Panel for Ruby on Rails applications
 
-[![Build Status](https://travis-ci.org/typus/typus.svg?branch=master)](https://travis-ci.org/typus/typus)
+[![Circle CI](https://circleci.com/gh/typus/typus/tree/master.svg?style=svg)](https://circleci.com/gh/typus/typus/tree/master)
 
 **Typus** is a control panel for [Ruby on Rails][rails] applications to
 allow trusted users edit structured content.
@@ -51,16 +51,15 @@ and go to <http://0.0.0.0:3000/admin>.
 
 To test, clone the repo and run:
 
-    git clone --recursive git://github.com/typus/typus.git
-    bundle install
-    bundle exec rake
+    git clone git://github.com/typus/typus.git
+    ./bin/run-tests
 
 
 ## Running a demo on localhost
 
 To run a demo on localhost:
 
-    git clone --recursive git://github.com/typus/typus.git
+    git clone git://github.com/typus/typus.git
     cd test/dummy
     ./bin/setup
     ./bin/rails server

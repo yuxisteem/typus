@@ -1,27 +1,30 @@
+<% password_digest = BCrypt::Password.create(Typus.password) %>
+
 admin:
   email: 'admin@example.com'
   role: 'admin'
   status: true
   token: <%= TypusUser.new.send(:set_token) %>
-  password_digest: <%= BCrypt::Password.create('12345678') %>
+  password_digest: <%= password_digest %>
 
 editor:
   email: 'editor@example.com'
   role: 'editor'
   status: true
   token: <%= TypusUser.new.send(:set_token) %>
-  password_digest: <%= BCrypt::Password.create('12345678') %>
+  password_digest: <%= password_digest %>
+
 
 designer:
   email: 'designer@example.com'
   role: 'designer'
   status: true
   token: <%= TypusUser.new.send(:set_token) %>
-  password_digest: <%= BCrypt::Password.create('12345678') %>
+  password_digest: <%= password_digest %>
 
 removed:
   email: 'removed@example.com'
   role: 'removed'
   status: true
   token: <%= TypusUser.new.send(:set_token) %>
-  password_digest: <%= BCrypt::Password.create('12345678') %>
+  password_digest: <%= password_digest %>
