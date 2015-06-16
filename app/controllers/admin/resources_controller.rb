@@ -187,7 +187,7 @@ class Admin::ResourcesController < Admin::BaseController
   def set_order
     params[:sort_order] ||= 'desc'
 
-    if (order = params[:order_by] ? "#{params[:order_by]} #{params[:sort_order]}" : @resource.typus_order_by).present?
+    if (order = params[:order_by] ? "#{@resource.table_name}.#{params[:order_by]} #{params[:sort_order]}" : @resource.typus_order_by).present?
       @resource = @resource.reorder(order)
     end
   end
