@@ -68,13 +68,15 @@ class Admin::TypusUsersControllerTest < ActionController::TestCase
   test "admin should not be able to change his role" do
     setup_admin
     post :update, :id => @typus_user.id, :typus_user => { :role => 'editor' }, :_save => true
-    assert_response :unprocessable_entity
+    assert_response :success
+    assert_equal "admin", @typus_user.reload.role
   end
 
   test "admin should not be able to change his status" do
     setup_admin
     post :update, :id => @typus_user.id, :typus_user => { :status => '0' }, :_save => true
-    assert_response :unprocessable_entity
+    assert_response :success
+    assert_equal true, @typus_user.reload.status
   end
 
   test "admin should be able to update other users role" do
@@ -111,9 +113,8 @@ class Admin::TypusUsersControllerTest < ActionController::TestCase
   test "editor should not be able to change his role" do
     editor_sign_in
     post :update, :id => @typus_user.id, :typus_user => { :role => 'admin' }, :_continue => true
-    assert_response :redirect
-    assert_redirected_to "/admin/typus_users/edit/#{@typus_user.id}"
-    assert_equal "editor", @typus_user.role
+    assert "cannot be changed", @typus_user.errors[:status]
+    assert_equal "editor", @typus_user.reload.role
   end
 
   test "editor should not be able to destroy his profile" do
