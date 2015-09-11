@@ -1,7 +1,7 @@
 <div class="box_relationships" id="<%= association_name %>">
 
   <h2>
-    <%= association_name.titleize.humanize %>
+    <%= @resource.human_attribute_name(association_name) %>
     <small><%= add_new %></small>
   </h2>
 
