@@ -25,7 +25,6 @@ gem 'jbuilder'
 
 # Database Adapters
 gem 'pg', '~> 0.18.3'
-gem 'sqlite3', '~> 1.3.10'
 
 # Typus can manage lists, trees, trashes, so we want to enable this stuff
 # on the demo.

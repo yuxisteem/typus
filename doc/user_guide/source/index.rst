@@ -22,7 +22,7 @@ Key Features
 * Customizable and extensible templates.
 * Integrated `paperclip`_ and `dragonfly`_ attachments viewer.
 * Supports Rails 4.0 and 3.2.
-* Tested with **SQLite3**, **MySQL** and **PostgreSQL**.
+* Tested with **MySQL** and **PostgreSQL**.
 * **MIT License**, the same as `Rails`_.
 
 
