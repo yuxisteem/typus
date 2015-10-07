@@ -108,6 +108,9 @@ module Typus
   mattr_accessor :link_to_help
   @@link_to_help = false
 
+  mattr_accessor :bootstrap_version
+  @@bootstrap_version = '3.3.5'
+
   class << self
 
     # Default way to setup typus. Run `rails generate typus` to create a

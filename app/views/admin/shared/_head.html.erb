@@ -9,8 +9,8 @@
 <%= stylesheet_link_tag 'typus/application' %>
 <%= javascript_include_tag 'typus/application' %>
 
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/<%= Typus.bootstrap_version %>/css/bootstrap.min.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/<%= Typus.bootstrap_version %>/js/bootstrap.min.js"></script>
 
 <%= yield :stylesheets -%>
 <%= yield :javascripts -%>
