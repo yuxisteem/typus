@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 gemspec
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.1'
+gem 'sass-rails', '~> 5.0.4'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
@@ -24,7 +24,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 
 # Database Adapters
-gem 'pg', '~> 0.17.1'
+gem 'pg', '~> 0.18.3'
 gem 'sqlite3', '~> 1.3.10'
 
 # Typus can manage lists, trees, trashes, so we want to enable this stuff
@@ -41,9 +41,9 @@ gem 'ckeditor-rails', github: 'fesplugas/rails-ckeditor'
 gem 'devise', '~> 3.4.1'
 
 # Asset Management
-gem 'dragonfly', '~> 1.0.7'
+gem 'dragonfly', '~> 1.0.12'
 gem 'rack-cache', require: 'rack/cache'
-gem 'paperclip', '~> 4.2.1'
+gem 'paperclip', '~> 4.3.1'
 gem 'carrierwave', '~> 0.10.0'
 
 # MongoDB
