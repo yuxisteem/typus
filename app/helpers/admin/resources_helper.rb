@@ -7,8 +7,10 @@ module Admin::ResourcesHelper
       rejections = %w(id controller action locale utf8 sort_order order_by search page subdomain)
       hidden_filters.delete_if { |k, _| rejections.include?(k) }
 
-      render 'helpers/admin/resources/search', hidden_filters: hidden_filters
+      render "helpers/admin/#{@resource.to_resource}/search", :hidden_filters => hidden_filters
     end
+  rescue ActionView::MissingTemplate
+    render 'helpers/admin/resources/search', hidden_filters: hidden_filters
   end
 
   def build_sidebar
