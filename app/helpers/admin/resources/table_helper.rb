@@ -42,7 +42,7 @@ module Admin::Resources::TableHelper
   end
 
   def table_fields_for_item(item, fields)
-    fields.map { |k, v| send("table_#{v}_field", k, item) }
+    fields.map { |k, v| send("table_#{v}_field", k, item) if v }
   end
 
   def table_actions(model, item)
