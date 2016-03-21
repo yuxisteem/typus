@@ -232,13 +232,13 @@ DEPENDENCIES
   carrierwave (~> 0.10.0)
   ckeditor-rails!
   coffee-rails (~> 4.1.0)
-  devise (~> 3.5.2)
+  devise (~> 3.5.6)
   dragonfly (~> 1.0.12)
   jbuilder
   jquery-rails
   minitest-rails-capybara
-  paperclip (~> 4.3.1)
-  pg (~> 0.18.3)
+  paperclip (~> 4.3.6)
+  pg (~> 0.18.4)
   poltergeist
   rack-cache
   rails-permalink (~> 1.0.0)

@@ -24,7 +24,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 
 # Database Adapters
-gem 'pg', '~> 0.18.3'
+gem 'pg', '~> 0.18.4'
 
 # Typus can manage lists, trees, trashes, so we want to enable this stuff
 # on the demo.
@@ -37,12 +37,12 @@ gem 'rails-trash', github: 'fesplugas/rails-trash'
 gem 'ckeditor-rails', github: 'fesplugas/rails-ckeditor'
 
 # Alternative authentication
-gem 'devise', '~> 3.5.2'
+gem 'devise', '~> 3.5.6'
 
 # Asset Management
 gem 'dragonfly', '~> 1.0.12'
 gem 'rack-cache', require: 'rack/cache'
-gem 'paperclip', '~> 4.3.1'
+gem 'paperclip', '~> 4.3.6'
 gem 'carrierwave', '~> 0.10.0'
 
 # MongoDB
