@@ -32,7 +32,7 @@ module Admin::Resources::DataTypes::BelongsToHelper
       options: { include_blank: true, attribute: "#{@resource.name.underscore}_#{related_fk}" }
     }
 
-    render 'admin/templates/belongs_to', locals
+    render get_template_for(@resource, related_fk.gsub("_id", ""), "belongs_to"), locals
   end
 
   def table_belongs_to_field(attribute, item)
@@ -52,7 +52,7 @@ module Admin::Resources::DataTypes::BelongsToHelper
 
     options = {
       controller: data.class.to_resource,
-      action: params[:action],
+      action: action_name,
       id: data.id,
     }
 
@@ -83,7 +83,7 @@ module Admin::Resources::DataTypes::BelongsToHelper
   def build_add_new_for_belongs_to(klass, options)
     html_options = set_modal_options_for(klass)
     html_options['data-controls-modal'] = "modal-from-dom-#{options[:attribute]}"
-    html_options['url'] = "/admin/#{klass.to_resource}/new?_popup=true"
+    html_options['url'] = "/admin/#{klass.to_resource}/new.html?_popup=true"
 
     link_to t('typus.buttons.add'), { anchor: html_options['data-controls-modal'] }, html_options
   end

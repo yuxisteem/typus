@@ -34,7 +34,7 @@ module Typus
         if @item && @item.is_a?(Typus.user_class)
           check_if_user_can_perform_action_on_user
         else
-          not_allowed if admin_user.cannot?(params[:action], @resource.model_name)
+          not_allowed if admin_user.cannot?(action_name, @resource.model_name)
         end
       end
 
@@ -45,7 +45,7 @@ module Typus
         is_current_user = (admin_user == @item)
         current_user_is_root = admin_user.is_root? && is_current_user
 
-        case params[:action]
+        case action_name
         when 'edit'
           # Edit other items is not allowed unless current user is root
           # and is not the current user.
@@ -74,7 +74,7 @@ module Typus
       #++
       def check_if_user_can_perform_action_on_resource
         resource = params[:controller].remove_prefix.camelize
-        not_allowed if admin_user.cannot?(params[:action], resource, { special: true })
+        not_allowed if admin_user.cannot?(action_name, resource, { special: true })
       end
 
       #--

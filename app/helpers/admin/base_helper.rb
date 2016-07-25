@@ -55,17 +55,9 @@ module Admin::BaseHelper
 
   def body_class
     klass = %w(base)
-
-    if params[:controller] == 'admin/dashboard'
-      klass << 'dashboard'
-    end
-
-    if @resource.try(:model_name)
-      klass << @resource.model_name.human.parameterize
-    end
-
-    klass << params[:action].parameterize
-
+    klass << 'dashboard' if params[:controller] == 'admin/dashboard'
+    klass << @resource.model_name.human.parameterize if @resource.try(:model_name)
+    klass << action_name.parameterize
     klass.join(' ')
   end
 

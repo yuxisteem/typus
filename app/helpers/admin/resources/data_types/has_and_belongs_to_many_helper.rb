@@ -35,7 +35,7 @@ module Admin::Resources::DataTypes::HasAndBelongsToManyHelper
       html_options: html_options,
     }
 
-    render 'admin/templates/has_and_belongs_to_many', locals
+    render get_template_for(@resource, attribute.singularize, "has_and_belongs_to_many"), locals
   end
 
   def build_label_text_for_has_and_belongs_to_many(klass, html_options, options = {})

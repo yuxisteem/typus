@@ -1,6 +1,6 @@
 <%
   whitelist = %w(index trash)
-  return unless whitelist.include?(params[:action])
+  return unless whitelist.include?(action_name)
 %>
 
 <% if @resource.typus_scopes.any? %>
@@ -27,7 +27,7 @@
 
   <ul class="nav nav-pills nav-stacked">
     <% predefined_filters.each do |filter, action, scope| %>
-      <% klass = params[:action].eql?(action) ? 'active' : 'inactive' %>
+      <% klass = action_name.eql?(action) ? 'active' : 'inactive' %>
       <li class="<%= klass %>">
         <% url = action.is_a?(String) ? params.dup.cleanup.merge(action: action) : action %>
         <%= link_to url do %>

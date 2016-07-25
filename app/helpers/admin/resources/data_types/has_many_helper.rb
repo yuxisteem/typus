@@ -32,14 +32,14 @@ module Admin::Resources::DataTypes::HasManyHelper
       table: build_relationship_table,
     }
 
-    render 'admin/templates/has_many', locals
+    render get_template_for(@resource, field, "has_many"), locals
   end
 
   def build_add_new_for_has_many(klass, field, options = {})
     if admin_user.can?('create', klass)
 
       html_options = set_modal_options_for(klass)
-      html_options['url'] = "/admin/#{klass.to_resource}/new?_popup=true"
+      html_options['url'] = "/admin/#{klass.to_resource}/new.html?_popup=true"
 
       link_to t('typus.buttons.add'), "##{html_options['data-controls-modal']}", html_options
     end

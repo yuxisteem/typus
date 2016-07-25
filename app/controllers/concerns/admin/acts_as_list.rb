@@ -8,7 +8,7 @@ module Admin
     extend ActiveSupport::Concern
 
     included do
-      # before_filter :set_predefined_filter_for_position, only: [:index]
+      # before_action :set_predefined_filter_for_position, only: [:index]
     end
 
     def set_predefined_filter_for_position

@@ -19,7 +19,7 @@ module Admin::Resources::DataTypes::HasOneHelper
       locals[:add_new] = build_add_new_for_has_one(@model_to_relate, field, options)
     end
 
-    render 'admin/templates/has_one', locals
+    render get_template_for(@resource, field, "has_one"), locals
   end
 
   def build_add_new_for_has_one(klass, field, options = {})

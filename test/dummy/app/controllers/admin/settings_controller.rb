@@ -1,6 +1,6 @@
 class Admin::SettingsController < Admin::BaseController
 
-  before_filter :verify_role
+  before_action :verify_role
 
   def index
   end

@@ -22,6 +22,6 @@ Gem::Specification.new do |spec|
   spec.test_files    = []
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'rails', '~> 4.2.6'
+  spec.add_dependency 'rails', '~> 5.0.0'
   spec.add_dependency 'bcrypt', '~> 3.1.11'
 end

@@ -28,7 +28,7 @@
 
       <li class="dropdown <%= klass %>">
         <%= link_to "#", :class => "dropdown-toggle", "data-toggle" => "dropdown" do %>
-          <%= t("typus.application.#{application.parameterize('_')}", default: application) %>
+          <%= t("typus.application.#{application.parameterize(separator: '_')}", default: application) %>
           <b class="caret"></b>
         <% end %>
 
