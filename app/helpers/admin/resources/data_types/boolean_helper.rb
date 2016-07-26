@@ -9,15 +9,19 @@ module Admin::Resources::DataTypes::BooleanHelper
   end
 
   def table_boolean_field(attribute, item)
-    options = {
-      controller: "/admin/#{item.class.to_resource}",
-      action: 'toggle',
-      id: item.id,
-      field: attribute.gsub(/\?$/, '')
-    }
-
     human_boolean = display_boolean(item, attribute)
-    link_to human_boolean, options
+
+    if admin_user.can?('edit', item.class)
+      options = {
+        controller: "/admin/#{item.class.to_resource}",
+        action: 'toggle',
+        id: item.id,
+        field: attribute.gsub(/\?$/, '')
+      }
+      link_to human_boolean, options
+    else
+      human_boolean
+    end
   end
 
   def boolean_filter(filter)
