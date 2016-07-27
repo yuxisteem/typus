@@ -115,7 +115,7 @@ class Admin::ResourcesController < Admin::BaseController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to :back }
+        format.html { redirect_back fallback_location: admin_dashboard_index_path }
         format.json { render json: @item }
       else
         format.html { render :edit }
