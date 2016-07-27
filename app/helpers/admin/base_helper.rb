@@ -62,7 +62,7 @@ module Admin::BaseHelper
   end
 
   def typus_search_path
-    path = controller_name.remove_prefix
+    path = controller_name
     path = Typus.subdomain.nil? ? "/admin/#{path}" : "/#{path}"
     path
   end

@@ -197,8 +197,6 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def redirect_on_success
-    path = params.dup.cleanup
-
     options = if params[:_addanother]
       { action: 'new', id: nil }
     elsif params[:_continue] || bypass_save_button_action
@@ -207,14 +205,14 @@ class Admin::ResourcesController < Admin::BaseController
       { action: nil, id: nil }
     end
 
-    notice = if action_name.eql?('create')
-                I18n.t('typus.flash.create_success', model: @resource.model_name.human)
-              else
-                I18n.t('typus.flash.update_success', model: @resource.model_name.human)
-              end
+    message = if action_name.eql?('create')
+      'typus.flash.create_success'
+    else
+      'typus.flash.update_success'
+    end
 
-    path = path.merge!(options).compact.to_hash
-    redirect_to path, notice: notice
+    notice = I18n.t(message, model: @resource.model_name.human)
+    redirect_to options, notice: notice
   end
 
   # Hack for TypusUser edits.
@@ -248,6 +246,11 @@ class Admin::ResourcesController < Admin::BaseController
     params[@object_name] = { params[:_nullify] => nil } if params[:_nullify]
     permit_params!
   end
+
+  def permitted_params
+    params.permit!
+  end
+  helper_method :permitted_params
 
   def permit_params!
     params[@object_name].permit!

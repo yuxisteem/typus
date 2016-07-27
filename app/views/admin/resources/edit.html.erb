@@ -12,8 +12,8 @@
 
   <%= admin_display_flash_message %>
 
-  <% locals = { options: params.dup.cleanup.merge!(action: 'update') } %>
-  <%= render 'form', locals %>
+  <% params[:action] = 'update' %>
+  <%= render 'form', locals = { options: params } %>
 
   <% unless headless_mode? %>
     <%= render 'admin/shared/modals' %>

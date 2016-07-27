@@ -1,5 +1,4 @@
 require "support/active_record" if defined?(ActiveRecord)
-require "support/hash"
 require "support/object"
 require "support/string"
 

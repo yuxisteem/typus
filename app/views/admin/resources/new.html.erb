@@ -12,7 +12,7 @@
 
   <%= admin_display_flash_message %>
 
-  <%= render 'form', { options: params.dup.cleanup.merge(:action => 'create') } %>
+  <%= render 'form', { options: params.permit.merge(action: 'create') } %>
 
   <% unless headless_mode? %>
     <%= render 'admin/shared/modals' %>
