@@ -7,10 +7,10 @@ GIT
 
 GIT
   remote: git://github.com/fesplugas/rails-trash.git
-  revision: d0b47b504232f9b7944c083934cc8880d849b540
+  revision: b963ba367d76a3c33a0f6b69368057bfe20ec873
   specs:
-    rails-trash (3.0.0)
-      rails (>= 3.2.12)
+    rails-trash (5.0.0)
+      rails (~> 5.0)
 
 GIT
   remote: git://github.com/typus/acts_as_list.git
