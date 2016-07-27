@@ -21,12 +21,12 @@ class Admin::EntriesControllerTest < ActionController::TestCase
   end
 
   test 'get index with scope' do
-    get :index, scope: 'published'
+    get :index, params: { scope: 'published' }
     assert_response :success
     assert_template 'index'
 
     %w(delete_all).each do |scope|
-      get :index, scope: scope
+      get :index, params: { scope: scope }
       assert_response :unprocessable_entity
       assert_equal 'Not allowed! Requested scope not defined on your whitelist.', response.body
       assert_not Entry.count.eql?(0)
@@ -41,14 +41,14 @@ class Admin::EntriesControllerTest < ActionController::TestCase
 
   test 'get new ignores url params' do
     %w(chunky_bacon).each do |param|
-      get :new, { param => param }
+      get :new, params: { param => param }
       assert_response :success
       assert_template 'new'
     end
   end
 
   test 'get new reads params[:resource]' do
-    get :new, { resource: { title: 'Chunky Bacon' } }
+    get :new, params: { resource: { title: 'Chunky Bacon' } }
     assert_response :success
     assert_template 'new'
     assert_equal 'Chunky Bacon', assigns(:item).title
@@ -59,7 +59,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
     entry_data.delete('id')
 
     assert_difference('Entry.count') do
-      post :create, entry: entry_data, _save: true
+      post :create, params: { entry: entry_data, _save: true }
       assert_response :redirect
       assert_redirected_to '/admin/entries'
     end
@@ -70,7 +70,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
     entry_data.delete('id')
 
     assert_difference('Entry.count') do
-      post :create, entry: entry_data, _addanother: true
+      post :create, params: { entry: entry_data, _addanother: true }
       assert_response :redirect
       assert_redirected_to '/admin/entries/new'
     end
@@ -81,7 +81,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
     entry_data.delete('id')
 
     assert_difference('Entry.count') do
-      post :create, entry: entry_data, _continue: true
+      post :create, params: { entry: entry_data, _continue: true }
       assert_response :redirect
       assert_redirected_to "/admin/entries/edit/#{Entry.last.id}"
     end
@@ -100,7 +100,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
   end
 
   test 'post update and redirect to index' do
-    post :update, id: entries(:default), entry: { title: 'Updated' }, _save: true
+    post :update, params: { id: entries(:default), entry: { title: 'Updated' }, _save: true }
     assert_response :redirect
     assert_redirected_to '/admin/entries'
   end
@@ -110,7 +110,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
     entry = entries(:default)
 
     assert entry.published
-    get :toggle, id: entry, field: 'published'
+    get :toggle, params: { id: entry, field: 'published' }
 
     assert_response :redirect
     assert_redirected_to @request.env['HTTP_REFERER']
@@ -122,7 +122,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
     entry = entries(:default)
 
     entry.update_column(:content, nil)
-    get :toggle, id: entry, field: 'published'
+    get :toggle, params: { id: entry, field: 'published' }
     assert_response :success
     assert_template 'admin/resources/edit'
   end
