@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 gemspec
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.5'
+gem 'sass-rails', '~> 5.0.6'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
@@ -40,7 +40,7 @@ gem 'devise', '~> 4.2.0'
 gem 'dragonfly', '~> 1.0.12'
 gem 'rack-cache', require: 'rack/cache'
 gem 'paperclip', '~> 5.0.0'
-gem 'carrierwave', '~> 0.10.0'
+gem 'carrierwave', '~> 0.11.2'
 
 # MongoDB
 # gem 'mongoid', github: 'mongoid/mongoid'
