@@ -68,7 +68,7 @@ class Admin::SessionControllerTest < ActionController::TestCase
   end
 
   test 'create should not create session for invalid users' do
-    post :create, { typus_user: { email: 'john@example.com', password: 'XXXXXXXX' } }
+    post :create, params: { typus_user: { email: 'john@example.com', password: 'XXXXXXXX' } }
     assert_response :redirect
     assert_redirected_to new_admin_session_path
   end
@@ -77,7 +77,7 @@ class Admin::SessionControllerTest < ActionController::TestCase
     typus_user = typus_users(:admin)
     typus_user.update_column(:status, false)
 
-    post :create, { typus_user: { email: typus_user.email, password: Typus.password } }
+    post :create, params: { typus_user: { email: typus_user.email, password: Typus.password } }
 
     assert_nil request.session[:typus_user_id]
     assert_response :redirect
@@ -86,7 +86,7 @@ class Admin::SessionControllerTest < ActionController::TestCase
 
   test 'create should create session for an enabled user' do
     typus_user = typus_users(:admin)
-    post :create, { typus_user: { email: typus_user.email, password: Typus.password } }
+    post :create, params: { typus_user: { email: typus_user.email, password: Typus.password } }
 
     assert_equal typus_user.id, request.session[:typus_user_id]
     assert_response :redirect
