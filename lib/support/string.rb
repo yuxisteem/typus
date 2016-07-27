@@ -9,7 +9,8 @@ class String
   end
 
   def extract_class
-    remove_prefix.classify.constantize
+    klass = classify rescue camelize
+    klass.constantize
   end
 
   def extract_singular_class
