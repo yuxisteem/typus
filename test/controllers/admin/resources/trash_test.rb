@@ -43,7 +43,7 @@ class Admin::EntryTrashesControllerTest < ActionController::TestCase
     @request.env['HTTP_REFERER'] = '/admin/entries/trash'
 
     @entry.destroy
-    get :restore, id: @entry.id
+    get :restore, params: { id: @entry.id }
     assert_response :redirect
     assert_redirected_to @request.env['HTTP_REFERER']
 
@@ -56,7 +56,7 @@ class Admin::EntryTrashesControllerTest < ActionController::TestCase
   test 'get restore when record does not exist' do
     @request.env['HTTP_REFERER'] = '/admin/entries/trash'
 
-    get :restore, id: 'unexisting'
+    get :restore, params: { id: 'unexisting' }
     assert_response :redirect
     assert_redirected_to @request.env['HTTP_REFERER']
 

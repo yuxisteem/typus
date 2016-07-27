@@ -21,7 +21,7 @@ Default EntryTrash,false
 Default Entry,true
      RAW
 
-    get :index, format: 'csv'
+    get :index, params: { format: 'csv' }
 
     assert_response :success
     assert_equal expected, response.body
@@ -35,7 +35,7 @@ Title,Published
 #{entry.title},true
      RAW
 
-    get :index, format: 'csv', published: 'true'
+    get :index, params: { format: 'csv', published: 'true' }
     assert_response :success
     assert_equal expected_published, response.body
 
@@ -44,7 +44,7 @@ Title,Published
 Default EntryTrash,false
      RAW
 
-     get :index, format: 'csv', published: 'false'
+     get :index, params: { format: 'csv', published: 'false' }
      assert_response :success
      assert_equal expected_unpublished, response.body
   end

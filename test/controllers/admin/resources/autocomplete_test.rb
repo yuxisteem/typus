@@ -17,7 +17,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
   test 'autocomplete returns up to 20 items' do
     create_25_entries
 
-    get :autocomplete, search: 'Entry'
+    get :autocomplete, params: { search: 'Entry' }
     assert_response :success
     assert_equal 20, assigns(:items).size
   end
@@ -29,7 +29,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
     entry.update_column(:id, 10_000)
     entry.update_column(:title, 'fesplugas')
 
-    get :autocomplete, search: 'fesp'
+    get :autocomplete, params: { search: 'fesp' }
     assert_response :success
     assert assigns(:items).size.eql?(1)
 
@@ -40,7 +40,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
   test 'autocomplete with only a search result' do
     create_25_entries
 
-    get :autocomplete, search: 'jmeiss'
+    get :autocomplete, params: { search: 'jmeiss' }
     assert_response :success
     assert assigns(:items).empty?
     assert_equal '[]', response.body

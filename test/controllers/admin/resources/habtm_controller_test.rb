@@ -25,7 +25,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
     }
 
     assert_difference('Entry.count') do
-      post :create, entry: entry_data
+      post :create, params: { entry: entry_data }
     end
 
     assert_equal [category_1, category_2], assigns(:item).categories

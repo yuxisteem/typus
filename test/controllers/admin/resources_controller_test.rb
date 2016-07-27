@@ -88,13 +88,13 @@ class Admin::EntriesControllerTest < ActionController::TestCase
   end
 
   test 'get show' do
-    get :show, id: entries(:default)
+    get :show, params: { id: entries(:default) }
     assert_response :success
     assert_template 'show'
   end
 
   test 'get edit' do
-    get :edit, id: entries(:default)
+    get :edit, params: { id: entries(:default) }
     assert_response :success
     assert_template 'edit'
   end
