@@ -25,7 +25,7 @@ class Admin::AssetsControllerTest < ActionController::TestCase
 
     asset.save
 
-    get :update, id: asset.id, _nullify: 'dragonfly', _continue: true
+    get :update, params: { id: asset.id, _nullify: 'dragonfly', _continue: true }
 
     assert_response :redirect
     assert_redirected_to "/admin/assets/edit/#{asset.id}"
