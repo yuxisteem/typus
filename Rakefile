@@ -26,6 +26,7 @@ namespace :test do
     t.description = "run all tests except the features"
     t.libs += %w(lib test)
     t.test_files = FileList['test/**/*_test.rb'] - FileList['test/features/**/*_test.rb']
+    t.warning = false
   end
 
   Rake::TestTask.new("features") do |t|
