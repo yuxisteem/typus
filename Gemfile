@@ -49,6 +49,7 @@ gem 'carrierwave', '~> 0.11.2'
 group :test do
   gem 'minitest-rails-capybara' # makes capybara's DSL methods available in Rails minitests
   gem 'poltergeist' # a headless browser (webkit) as capybara driver
+  gem 'rails-controller-testing'
 end
 
 gem 'puma'
