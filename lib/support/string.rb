@@ -9,7 +9,7 @@ class String
   end
 
   def extract_class
-    klass = remove_prefix.classify rescue remove_prefix.camelize
+    klass = classify rescue camelize
     klass.constantize
   end
 
