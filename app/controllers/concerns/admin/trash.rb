@@ -42,18 +42,19 @@ module Admin
     def restore
       begin
         @resource.restore(params[:id])
-        message = I18n.t('typus.flash.trash_recover_success', resource: @resource.model_name.human)
+        notice = I18n.t('typus.flash.trash_recover_success', resource: @resource.model_name.human)
       rescue ActiveRecord::RecordNotFound
-        message = I18n.t('typus.flash.trash_recover_failed', resource: @resource.model_name.human)
+        notice = I18n.t('typus.flash.trash_recover_failed', resource: @resource.model_name.human)
       end
 
-      redirect_to :back, notice: message
+      redirect_back fallback_location: admin_dashboard_index_path, notice: notice
     end
 
     def wipe
       item = @resource.find_in_trash(params[:id])
       item.disable_trash { item.destroy }
-      redirect_to :back, notice: I18n.t('typus.flash.wipe_success', resource: @resource.model_name.human)
+      notice = I18n.t('typus.flash.wipe_success', resource: @resource.model_name.human)
+      redirect_back fallback_location: admin_dashboard_index_path, notice: notice
     end
 
     def set_deleted

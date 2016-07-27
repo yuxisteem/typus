@@ -352,7 +352,7 @@ Add those actions to your admin controllers.
     # Action to deliver emails ...
     def deliver
       ...
-      redirect_to :back
+      redirect_back fallback_location: admin_dashboard_index_path
     end
 
   end

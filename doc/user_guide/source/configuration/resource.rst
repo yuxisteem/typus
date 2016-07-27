@@ -21,7 +21,8 @@ First of all we will create a controller:
     # Here we flush all the keys and redirect to the index.
     def flush_all
       ...
-      redirect_to :back, :notice => I18n.t("Memcached has been flushed.")
+      notice = I18n.t("Memcached has been flushed.")
+      redirect_back fallback_location: admin_dashboard_index_path, notice: notice
     end
 
   end

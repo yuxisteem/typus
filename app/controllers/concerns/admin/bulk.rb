@@ -32,21 +32,21 @@ module Admin
         else
           I18n.t('typus.flash.bulk_no_items')
         end
-        redirect_to :back, notice: notice
+        redirect_back fallback_location: admin_dashboard_index_path, notice: notice
       end
     end
 
     def bulk_destroy(ids)
       ids.each { |id| @resource.destroy(id) }
       notice = I18n.t('typus.flash.bulk_delete_success', count: ids.count)
-      redirect_to :back, notice: notice
+      redirect_back fallback_location: admin_dashboard_index_path, notice: notice
     end
     private :bulk_destroy
 
     def bulk_restore(ids)
       ids.each { |id| @resource.deleted.find(id).restore }
       notice = I18n.t('Successfully restored %{count} entries.', count: ids.count)
-      redirect_to :back, notice: notice
+      redirect_back fallback_location: admin_dashboard_index_path, notice: notice
     end
     private :bulk_restore
 

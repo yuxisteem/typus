@@ -7,12 +7,12 @@ class Admin::EntryBulksController < Admin::ResourcesController
 
   def bulk_publish(ids)
     EntryBulk.where(id: ids).update_all(published: true)
-    redirect_to :back
+    redirect_back fallback_location: admin_dashboard_index_path
   end
 
   def bulk_unpublish(ids)
     EntryBulk.where(id: ids).update_all(published: false)
-    redirect_to :back
+    redirect_back fallback_location: admin_dashboard_index_path
   end
 
   def set_bulk_action_to_publish
