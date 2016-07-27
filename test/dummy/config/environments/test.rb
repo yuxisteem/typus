@@ -36,9 +36,6 @@ Rails.application.configure do
 
   # Randomize tests.
   config.active_support.test_order = :random
-
-  # Raise in transactional callbacks.
-  config.active_record.raise_in_transactional_callbacks = true
 end
 
 Typus.setup do |config|
