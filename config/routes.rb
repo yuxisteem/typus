@@ -27,7 +27,10 @@ Rails.application.routes.draw do
       get "#{_resource}/edit/:id", controller: _resource, action: 'edit'
       get "#{_resource}/show/:id(.:format)", controller: _resource, action: 'show'
 
-      actions = %w(new create update destroy position bulk autocomplete toggle restore trash wipe)
+      get "#{_resource}/destroy/:id", controller: _resource, action: 'destroy'
+      delete "#{_resource}/destroy/:id", controller: _resource, action: 'destroy'
+
+      actions = %w(new create update position bulk autocomplete toggle restore trash wipe)
       actions.each do |_action|
         post "#{_resource}(/#{_action}(/:id))(.:format)", controller: _resource, action: _action
         patch "#{_resource}(/#{_action}(/:id))(.:format)", controller: _resource, action: _action

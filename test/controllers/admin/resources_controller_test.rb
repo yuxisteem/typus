@@ -128,4 +128,21 @@ class Admin::EntriesControllerTest < ActionController::TestCase
     assert_template 'admin/resources/edit'
   end
 
+  test 'get destroy' do
+    assert_no_difference ->{ Entry.count } do
+      get :destroy, params: { id: entries(:default) }
+    end
+
+    assert_response :success
+    assert_template 'destroy'
+  end
+
+  test 'delete destroy' do
+    assert_difference ->{ Entry.count }, -1 do
+      delete :destroy, params: { id: entries(:default) }
+    end
+
+    assert_response :redirect
+  end
+
 end
