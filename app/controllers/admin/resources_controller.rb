@@ -132,7 +132,7 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def resource
-    controller_name.extract_class
+    controller_path.extract_class
   end
   helper_method :resource
 
@@ -202,7 +202,7 @@ class Admin::ResourcesController < Admin::BaseController
     elsif params[:_continue] || bypass_save_button_action
       { action: 'edit', id: @item.id }
     else
-      { action: nil, id: nil }
+      { action: 'index' }
     end
 
     message = if action_name.eql?('create')

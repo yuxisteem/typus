@@ -10,6 +10,8 @@ class Admin::Resources::DataTypes::HasAndBelongsToManyHelperTest < ActiveSupport
   end
 
   test 'typus_has_and_belongs_to_many_field' do
+    skip
+
     @resource, attribute, form = EntryDefault, 'categories', {}
 
     @item = entries(:default)

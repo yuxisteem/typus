@@ -58,11 +58,12 @@ class Admin::EntriesControllerTest < ActionController::TestCase
     entry_data = entries(:default).attributes
     entry_data.delete('id')
 
-    assert_difference('Entry.count') do
+    assert_difference ->{ Entry.count } do
       post :create, params: { entry: entry_data, _save: true }
-      assert_response :redirect
-      assert_redirected_to '/admin/entries'
     end
+
+    assert_response :redirect
+    assert_redirected_to '/admin/entries'
   end
 
   test 'post create and redirect to add new' do

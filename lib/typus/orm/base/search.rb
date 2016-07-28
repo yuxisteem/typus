@@ -39,13 +39,17 @@ module Typus
           ["#{key}.id = ?", value]
         end
 
-        # To build conditions we accept only model fields and the search
-        # param.
+        # To build conditions we accept only model fields and the search param.
         def build_conditions(params)
           Array.new.tap do |conditions|
-            query_params = params.to_h.dup
+            query_params = params.dup
 
-            query_params.reject! do |k, v|
+            # HACK: Ideally everything should be a `ActionController::Parameters` object
+            unless params.is_a?(Hash)
+              query_params = query_params.permit!.to_h
+            end
+
+            query_params.reject! do |k, _|
               !model_fields.keys.include?(k.to_sym) &&
               !model_relationships.keys.include?(k.to_sym) &&
               !(k.to_sym == :search)

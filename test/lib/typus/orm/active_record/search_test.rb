@@ -134,19 +134,6 @@ class ActiveRecordTest < ActiveSupport::TestCase
   end
 
   test 'build_conditions should return_sql_conditions_on_search_and_filter_for_typus_user' do
-    expected = case db_adapter
-               when "postgresql"
-                 ["LOWER(TEXT(typus_users.role)) LIKE '%francesc%'",
-                  "LOWER(TEXT(typus_users.last_name)) LIKE '%francesc%'",
-                  "LOWER(TEXT(typus_users.email)) LIKE '%francesc%'",
-                  "LOWER(TEXT(typus_users.first_name)) LIKE '%francesc%'"]
-               else
-                 ["typus_users.first_name LIKE '%francesc%'",
-                  "typus_users.last_name LIKE '%francesc%'",
-                  "typus_users.email LIKE '%francesc%'",
-                  "typus_users.role LIKE '%francesc%'"]
-               end
-
     params = { search: 'admin@example', status: 'true' }
 
     resource = TypusUser

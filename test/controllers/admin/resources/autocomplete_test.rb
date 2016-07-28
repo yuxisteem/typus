@@ -26,11 +26,11 @@ class Admin::EntriesControllerTest < ActionController::TestCase
     create_25_entries
 
     entry = entries(:default)
-    entry.update_column(:id, 10_000)
-    entry.update_column(:title, 'fesplugas')
+    entry.update_columns(id: 10_000, title: 'fesplugas')
 
     get :autocomplete, params: { search: 'fesp' }
     assert_response :success
+
     assert assigns(:items).size.eql?(1)
 
     assert_match %Q["id":10000], response.body
