@@ -39,7 +39,7 @@ gem 'devise', '~> 4.2.0'
 # Asset Management
 gem 'dragonfly', '~> 1.0.12'
 gem 'rack-cache', require: 'rack/cache'
-gem 'paperclip', '~> 5.0.0'
+gem 'paperclip', '~> 5.1.0'
 gem 'carrierwave', '~> 0.11.2'
 
 # MongoDB

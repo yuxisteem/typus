@@ -152,7 +152,7 @@ GEM
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
     orm_adapter (0.5.0)
-    paperclip (5.0.0)
+    paperclip (5.1.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       cocaine (~> 0.5.5)
@@ -245,7 +245,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   minitest-rails-capybara
-  paperclip (~> 5.0.0)
+  paperclip (~> 5.1.0)
   pg (~> 0.18.4)
   poltergeist
   puma
