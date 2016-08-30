@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       get "#{_resource}(.:format)", controller: _resource, action: 'index'
       get "#{_resource}/new", controller: _resource, action: 'new'
       get "#{_resource}/edit/:id", controller: _resource, action: 'edit'
+      get "#{_resource}/toggle/:id", controller: _resource, action: 'toggle'
       get "#{_resource}/show/:id(.:format)", controller: _resource, action: 'show'
 
       get "#{_resource}/destroy/:id", controller: _resource, action: 'destroy'
