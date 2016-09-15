@@ -79,7 +79,7 @@ pull request with failing specs.
 
 ## Links
 
-- [Documentation](http://docs.typuscmf.com/)
+- [Documentation](https://github.com/typus/typus/wiki/)
 - [RubyGems][typus_gem]
 - [Contributors List](http://github.com/typus/typus/contributors)
 
